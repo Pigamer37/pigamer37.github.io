@@ -29,7 +29,7 @@
   /*Thkfully rms underline for some reason*/
   display:inline-block;
 }
-.Instagram,.Twitter,.Bluesky,.Spotify,.GitHub,.LinkedIn,.YT,.lastfm,.letterboxd,.linktree,.Twitch,.TikTok,.Ko-fi {
+.Instagram,.Twitter,.Bluesky,.Spotify,.GitHub,.LinkedIn,.YT,.lastfm,.letterboxd,.linktree,.Twitch,.TikTok,.Ko-fi,.ORCID {
   &:before{
   content:"";
   display:inline-block;
@@ -78,6 +78,9 @@
 }
 .TikTok:before{
   background-image:url('https://www.tiktok.com/favicon.ico');
+}
+.ORCID:before{
+  background-image:url('https://orcid.org/sites/default/files/images/orcid_16x16.png');
 }
 .Ko-fi:before{
   background-size:contain;
