@@ -10,7 +10,7 @@
       "imdbRating": "8.7",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "odIwkGztmcc"
         }
       ],
       "links": [
@@ -61,14 +61,14 @@
       "imdbRating": "7.5",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "cbdGGr70_44"
         }
       ],
       "links": [
         {
           "category": "Open in Stremio",
           "name": "TMDB metadata",
-          "url": "stremio:///detail/movie/tmdb:"
+          "url": "stremio:///detail/movie/tmdb:113082"
         },
         {
           "category": "Berserk: The Golden Age Arc",
@@ -88,7 +88,7 @@
         {
           "category": "Open in",
           "name": "TMDB",
-          "url": "https://www.themoviedb.org/tv/"
+          "url": "https://www.themoviedb.org/tv/113082"
         },
         {
           "category": "Open in",
@@ -114,6 +114,16 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Director",
+          "name": "Toshiyuki Kubooka",
+          "url": "stremio:///search?search=Toshiyuki%20Kubooka"
+        },
+        {
+          "category": "Writer",
+          "name": "Ichirou Ookouchi",
+          "url": "stremio:///search?search=Ichirou%20Ookouchi"
         }
       ]
     },
@@ -127,14 +137,14 @@
       "imdbRating": "7.7",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "pk6_Px2T4gU"
         }
       ],
       "links": [
         {
           "category": "Open in Stremio",
           "name": "TMDB metadata",
-          "url": "stremio:///detail/movie/tmdb:"
+          "url": "stremio:///detail/movie/tmdb:118412"
         },
         {
           "category": "Berserk: The Golden Age Arc",
@@ -154,7 +164,7 @@
         {
           "category": "Open in",
           "name": "TMDB",
-          "url": "https://www.themoviedb.org/tv/"
+          "url": "https://www.themoviedb.org/tv/118412"
         },
         {
           "category": "Open in",
@@ -180,6 +190,16 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Director",
+          "name": "Toshiyuki Kubooka",
+          "url": "stremio:///search?search=Toshiyuki%20Kubooka"
+        },
+        {
+          "category": "Writer",
+          "name": "Ichirou Ookouchi",
+          "url": "stremio:///search?search=Ichirou%20Ookouchi"
         }
       ]
     },
@@ -193,14 +213,14 @@
       "imdbRating": "7.9",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "De69FDREaEg"
         }
       ],
       "links": [
         {
           "category": "Open in Stremio",
           "name": "TMDB metadata",
-          "url": "stremio:///detail/movie/tmdb:"
+          "url": "stremio:///detail/movie/tmdb:144288"
         },
         {
           "category": "Berserk: The Golden Age Arc",
@@ -220,7 +240,7 @@
         {
           "category": "Open in",
           "name": "TMDB",
-          "url": "https://www.themoviedb.org/tv/"
+          "url": "https://www.themoviedb.org/tv/144288"
         },
         {
           "category": "Open in",
@@ -246,6 +266,16 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Director",
+          "name": "Toshiyuki Kubooka",
+          "url": "stremio:///search?search=Toshiyuki%20Kubooka"
+        },
+        {
+          "category": "Writer",
+          "name": "Ichirou Ookouchi",
+          "url": "stremio:///search?search=Ichirou%20Ookouchi"
         }
       ]
     },
@@ -259,14 +289,14 @@
       "imdbRating": "8.3",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "H6dkuEdzaFY"
         }
       ],
       "links": [
         {
           "category": "Open in Stremio",
           "name": "TMDB metadata",
-          "url": "stremio:///detail/movie/tmdb:"
+          "url": "stremio:///detail/movie/tmdb:211057"
         },
         {
           "category": "Berserk: The Golden Age Arc",
@@ -286,7 +316,7 @@
         {
           "category": "Open in",
           "name": "TMDB",
-          "url": "https://www.themoviedb.org/tv/"
+          "url": "https://www.themoviedb.org/tv/211057"
         },
         {
           "category": "Open in",
@@ -312,6 +342,11 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Writer",
+          "name": "Ichirou Ookouchi",
+          "url": "stremio:///search?search=Ichirou%20Ookouchi"
         }
       ]
     },
@@ -325,19 +360,19 @@
       "imdbRating": "6.7",
       "trailers": [
         {
-          "ytId": ""
+          "ytId": "2LjExEgg9Xw"
         }
       ],
       "links": [
         {
           "category": "Open in Stremio",
           "name": "TMDB metadata",
-          "url": "stremio:///detail/series/tmdb:"
+          "url": "stremio:///detail/series/tmdb:66053"
         },
         {
           "category": "Open in",
           "name": "TMDB",
-          "url": "https://www.themoviedb.org/tv/"
+          "url": "https://www.themoviedb.org/tv/66053"
         },
         {
           "category": "Open in",
@@ -363,6 +398,11 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Director",
+          "name": "Shin Itagaki",
+          "url": "stremio:///search?search=Shin%20Itagaki"
         }
       ]
     }
