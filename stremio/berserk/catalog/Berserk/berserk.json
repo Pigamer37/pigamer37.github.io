@@ -1,0 +1,370 @@
+{
+  "metas": [
+    {
+      "id": "tt0318871",
+      "type": "series",
+      "name": "Berserk",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMzEzMzhkNDgtY2Q0YS00MDk0LTg0YzItODY5ZjNjMDc4ODI3XkEyXkFqcGc@._V1_FMjpg_UY1361_.jpg",
+      "description": "Guts, a wandering mercenary, joins the Band of the Hawk after being defeated in a duel by Griffith, the group's leader and founder. Together, they dominate every battle, but something menacing lurks in the shadows.",
+      "releaseInfo": "1997-1998",
+      "imdbRating": "8.7",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/series/tmdb:35935"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/35935"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt0318871"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    },
+    {
+      "id": "tt2210479",
+      "type": "movie",
+      "name": "Berserk: The Golden Age Arc I - The Egg of the King",
+      "poster": "",
+      "description": "A lone sellsword named Guts gets recruited into a mercenary band and attempts to help the Band's leader, Griffith, on his rise to power.",
+      "releaseInfo": "2012",
+      "imdbRating": "7.5",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/movie/tmdb:"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
+          "url": "stremio:///detail/movie/tt2358911"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc III - The Advent",
+          "url": "stremio:///detail/movie/tt2358913"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc - Memorial Edition",
+          "url": "stremio:///detail/series/tt22445494"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt2210479"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    },
+    {
+      "id": "tt2358911",
+      "type": "movie",
+      "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
+      "poster": "",
+      "description": "For three years, Guts believed his mission was to pursue Griffith's dream together with him. But in order to become Griffith's equal and truly be called his friend, Guts realizes he will have to leave the Band of the Hawk.",
+      "releaseInfo": "2012",
+      "imdbRating": "7.7",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/movie/tmdb:"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc I - The Egg of the King",
+          "url": "stremio:///detail/movie/tt2210479"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc III - The Advent",
+          "url": "stremio:///detail/movie/tt2358913"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc - Memorial Edition",
+          "url": "stremio:///detail/series/tt22445494"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt2358911"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    },
+    {
+      "id": "tt2358913",
+      "type": "movie",
+      "name": "Berserk: The Golden Age Arc III - The Advent",
+      "poster": "",
+      "description": "A year has passed since Guts parted ways with Griffith. The Band of the Hawk is plotting a rescue mission to save Griffith who is confined to prison.",
+      "releaseInfo": "2013",
+      "imdbRating": "7.9",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/movie/tmdb:"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc I - The Egg of the King",
+          "url": "stremio:///detail/movie/tt2210479"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
+          "url": "stremio:///detail/movie/tt2358911"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc - Memorial Edition",
+          "url": "stremio:///detail/series/tt22445494"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt2358913"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/movie/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    },
+    {
+      "id": "tt22445494",
+      "type": "series",
+      "name": "Berserk: The Golden Age Arc - Memorial Edition",
+      "poster": "",
+      "description": "A lone sellsword named Guts gets recruited into a mercenary band and attempts to help the Band's leader, Griffith, on his rise to power.",
+      "releaseInfo": "2022",
+      "imdbRating": "8.3",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/movie/tmdb:"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc I - The Egg of the King",
+          "url": "stremio:///detail/movie/tt2210479"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
+          "url": "stremio:///detail/movie/tt2358911"
+        },
+        {
+          "category": "Berserk: The Golden Age Arc",
+          "name": "Berserk: The Golden Age Arc III - The Advent",
+          "url": "stremio:///detail/movie/tt2358913"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt22445494"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    },
+    {
+      "id": "tt5847454",
+      "type": "series",
+      "name": "Berserk (2016)",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMzEzMzhkNDgtY2Q0YS00MDk0LTg0YzItODY5ZjNjMDc4ODI3XkEyXkFqcGc@._V1_FMjpg_UY1361_.jpg",
+      "description": "Guts, \"The Black Swordsman\", is pursued by demons who are attracted to him, due to a demonic brand on his neck. His goal is to free himself and his lover Casca of this inescapable curse. His other life's goal is to gain vengeance on his former best friend Griffith, who doomed him and his former band of mercenaries to obtain demonic powers for his own. Gut's giant \"Dragon Slayer\" sword, the Elf Puck and a growing band of misfit companions aid him in his quest for vengeance.",
+      "releaseInfo": "2016-2017",
+      "imdbRating": "6.7",
+      "trailers": [
+        {
+          "ytId": ""
+        }
+      ],
+      "links": [
+        {
+          "category": "Open in Stremio",
+          "name": "TMDB metadata",
+          "url": "stremio:///detail/series/tmdb:"
+        },
+        {
+          "category": "Open in",
+          "name": "TMDB",
+          "url": "https://www.themoviedb.org/tv/"
+        },
+        {
+          "category": "Open in",
+          "name": "IMDB",
+          "url": "https://www.imdb.com/title/tt5847454"
+        },
+        {
+          "category": "Genres",
+          "name": "Anime",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Anime"
+        },
+        {
+          "category": "Genres",
+          "name": "Body Horror",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Body%20Horror"
+        },
+        {
+          "category": "Genres",
+          "name": "Dark Fantasy",
+          "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Dark%20Fantasy"
+        },
+        {
+          "category": "Creator",
+          "name": "Kentaro Miura",
+          "url": "stremio:///search?search=Kentaro%20Miura"
+        }
+      ]
+    }
+  ]
+}

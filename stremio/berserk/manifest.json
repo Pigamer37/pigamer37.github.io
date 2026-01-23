@@ -1,0 +1,38 @@
+{
+  "id": "com.berserk.addon",
+  "version": "0.0.1",
+  "name": "Berserk",
+  "logo": "https://play-lh.googleusercontent.com/ZIjIwO5FJe9R1rplSd4uz54OwBxQhwDcznjljSPl2MgHaCoyF3qG6R4kRMCB40f4l2A=w256",
+  "description": "A catalog of all multimedia content related to the anime/manga series Berserk.",
+  "catalogs": [
+    {
+      "id": "berserk",
+      "type": "Berserk",
+      "name": "Berserk",
+      "extra": [
+        {
+          "name": "search",
+          "isRequired": false
+        },
+        {
+          "name": "genre",
+          "options": [
+            "2018"
+          ],
+          "optionsLimit": 1,
+          "isRequired": false
+        }
+      ]
+    }
+  ],
+  "resources": [
+    "catalog"
+  ],
+  "types": [
+    "movie",
+    "series"
+  ],
+  "idPrefixes": [
+    "tt"
+  ]
+}
