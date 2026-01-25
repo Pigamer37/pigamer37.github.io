@@ -5,6 +5,8 @@
       "type": "series",
       "name": "Berserk",
       "poster": "https://m.media-amazon.com/images/M/MV5BMzEzMzhkNDgtY2Q0YS00MDk0LTg0YzItODY5ZjNjMDc4ODI3XkEyXkFqcGc@._V1_FMjpg_UY1361_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt0318871/img",
+      "runtime": "23 min",
       "description": "Guts, a wandering mercenary, joins the Band of the Hawk after being defeated in a duel by Griffith, the group's leader and founder. Together, they dominate every battle, but something menacing lurks in the shadows.",
       "releaseInfo": "1997-1998",
       "imdbRating": "8.7",
@@ -48,6 +50,11 @@
           "category": "Creator",
           "name": "Kentaro Miura",
           "url": "stremio:///search?search=Kentaro%20Miura"
+        },
+        {
+          "category": "Director",
+          "name": "Naohito Takahashi",
+          "url": "stremio:///search?search=Naohito%20Takahashi"
         }
       ]
     },
@@ -55,7 +62,9 @@
       "id": "tt2210479",
       "type": "movie",
       "name": "Berserk: The Golden Age Arc I - The Egg of the King",
-      "poster": "",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYmYwZGE5OGItOGYzNC00OTM3LThhYjEtMmU4OGMwYmIxYjQxXkEyXkFqcGc@._V1_QL75_UY562_CR8,0,380,562_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt2210479/img",
+      "runtime": "76 min",
       "description": "A lone sellsword named Guts gets recruited into a mercenary band and attempts to help the Band's leader, Griffith, on his rise to power.",
       "releaseInfo": "2012",
       "imdbRating": "7.5",
@@ -131,7 +140,9 @@
       "id": "tt2358911",
       "type": "movie",
       "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
-      "poster": "",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMDU3YjQ5ZTctMmY4YS00ODQ5LThhMzctZDNkZWM1NGIwOGQxXkEyXkFqcGc@._V1_QL75_UY562_CR16,0,380,562_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt2358911/img",
+      "runtime": "95 min",
       "description": "For three years, Guts believed his mission was to pursue Griffith's dream together with him. But in order to become Griffith's equal and truly be called his friend, Guts realizes he will have to leave the Band of the Hawk.",
       "releaseInfo": "2012",
       "imdbRating": "7.7",
@@ -207,7 +218,9 @@
       "id": "tt2358913",
       "type": "movie",
       "name": "Berserk: The Golden Age Arc III - The Advent",
-      "poster": "",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYzNkOGUxOTUtMWVkNy00YjcxLWEzZTYtYTRhNTIwMWFmOGYyXkEyXkFqcGc@._V1_QL75_UY562_CR5,0,380,562_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt2358913/img",
+      "runtime": "110 min",
       "description": "A year has passed since Guts parted ways with Griffith. The Band of the Hawk is plotting a rescue mission to save Griffith who is confined to prison.",
       "releaseInfo": "2013",
       "imdbRating": "7.9",
@@ -283,8 +296,10 @@
       "id": "tt22445494",
       "type": "series",
       "name": "Berserk: The Golden Age Arc - Memorial Edition",
-      "poster": "",
-      "description": "A lone sellsword named Guts gets recruited into a mercenary band and attempts to help the Band's leader, Griffith, on his rise to power.",
+      "poster": "https://m.media-amazon.com/images/M/MV5BODE2NzY4MjQtNGVlNC00MzkxLTllYTMtNjA4OGUxMjI4ZGYyXkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt22445494/img",
+      "runtime": "25 min",
+      "description": "A remastered edited version of \"The Golden Age Arc\" movie trilogy for television, with new scenes.\nA lone sellsword named Guts gets recruited into a mercenary band and attempts to help the Band's leader, Griffith, on his rise to power.",
       "releaseInfo": "2022",
       "imdbRating": "8.3",
       "trailers": [
@@ -344,6 +359,16 @@
           "url": "stremio:///search?search=Kentaro%20Miura"
         },
         {
+          "category": "Directors",
+          "name": "Toshiyuki Kubooka",
+          "url": "stremio:///search?search=Toshiyuki%20Kubooka"
+        },
+        {
+          "category": "Directors",
+          "name": "Yuta Sano",
+          "url": "stremio:///search?search=Yuta%20Sano"
+        },
+        {
           "category": "Writer",
           "name": "Ichirou Ookouchi",
           "url": "stremio:///search?search=Ichirou%20Ookouchi"
@@ -354,7 +379,9 @@
       "id": "tt5847454",
       "type": "series",
       "name": "Berserk (2016)",
-      "poster": "https://m.media-amazon.com/images/M/MV5BMzEzMzhkNDgtY2Q0YS00MDk0LTg0YzItODY5ZjNjMDc4ODI3XkEyXkFqcGc@._V1_FMjpg_UY1361_.jpg",
+      "poster": "https://m.media-amazon.com/images/M/MV5BOTY0ZGMwZmEtNDVmMy00OWJmLWFlNjEtMGZkNTdlN2EzOWVmXkEyXkFqcGc@._V1_FMjpg_UX1200_.jpg",
+      "logo": "https://images.metahub.space/logo/medium/tt5847454/img",
+      "runtime": "24 min",
       "description": "Guts, \"The Black Swordsman\", is pursued by demons who are attracted to him, due to a demonic brand on his neck. His goal is to free himself and his lover Casca of this inescapable curse. His other life's goal is to gain vengeance on his former best friend Griffith, who doomed him and his former band of mercenaries to obtain demonic powers for his own. Gut's giant \"Dragon Slayer\" sword, the Elf Puck and a growing band of misfit companions aid him in his quest for vengeance.",
       "releaseInfo": "2016-2017",
       "imdbRating": "6.7",
@@ -403,6 +430,16 @@
           "category": "Director",
           "name": "Shin Itagaki",
           "url": "stremio:///search?search=Shin%20Itagaki"
+        },
+        {
+          "category": "Writers",
+          "name": "Jalen K. Cassell",
+          "url": "stremio:///search?search=Jalen%20K.%20Cassell"
+        },
+        {
+          "category": "Writers",
+          "name": "Makoto Fukami",
+          "url": "stremio:///search?search=Makoto%20Fukami"
         }
       ]
     }

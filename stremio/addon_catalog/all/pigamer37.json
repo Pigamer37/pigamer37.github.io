@@ -35,10 +35,11 @@
       "transportName": "http",
       "manifest": {
         "id": "com.animeflv.stremio.addon",
-        "version": "1.0.0",
-        "name": "AnimeFLV & AnimeAV1",
+        "version": "1.1.0",
+        "name": "AnimeFLV, AnimeAV1 & Henaojara",
         "logo": "https://play-lh.googleusercontent.com/ZIjIwO5FJe9R1rplSd4uz54OwBxQhwDcznjljSPl2MgHaCoyF3qG6R4kRMCB40f4l2A=w256",
-        "description": "Add AnimeFLV & AnimeAV1 functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV or AnimeAV1. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
+        "background": "https://images6.alphacoders.com/113/1135890.jpg",
+        "description": "Add AnimeFLV, AnimeAV1 & Henaojara functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV, AnimeAV1 or Henaojara. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
         "catalogs": [
           {
             "id": "animeflv",
@@ -147,6 +148,88 @@
                   "seinen",
                   "shoujo",
                   "shounen",
+                  "sobrenatural",
+                  "superpoderes",
+                  "suspenso",
+                  "terror",
+                  "vampiros",
+                  "yaoi",
+                  "yuri"
+                ],
+                "optionsLimit": 1,
+                "isRequired": false
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
+            "id": "henaojara",
+            "type": "Henaojara",
+            "name": "search results",
+            "extra": [
+              {
+                "name": "search",
+                "isRequired": true
+              },
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "aenime",
+                  "anime-latino",
+                  "artes-marciales",
+                  "aventura",
+                  "aventuras",
+                  "blu-ray",
+                  "carreras",
+                  "castellano",
+                  "ciencia-ficcion",
+                  "comedia",
+                  "comida",
+                  "cyberpunk",
+                  "demencia",
+                  "dementia",
+                  "demonios",
+                  "deportes",
+                  "drama",
+                  "ecchi",
+                  "escolares",
+                  "escuela",
+                  "espacial",
+                  "fantasia",
+                  "gore",
+                  "harem",
+                  "historia-paralela",
+                  "historico",
+                  "horror",
+                  "infantil",
+                  "josei",
+                  "juegos",
+                  "latino",
+                  "lucha",
+                  "magia",
+                  "mecha",
+                  "militar",
+                  "misterio",
+                  "monogatari",
+                  "musica",
+                  "parodia",
+                  "parodias",
+                  "policia",
+                  "psicologico",
+                  "recuentos-de-la-vida",
+                  "recuerdos-de-la-vida",
+                  "romance",
+                  "samurai",
+                  "seinen",
+                  "shojo",
+                  "shonen",
+                  "shoujo",
+                  "shounen",
+                  "shounen-ai",
                   "sobrenatural",
                   "superpoderes",
                   "suspenso",
@@ -281,6 +364,84 @@
             ]
           },
           {
+            "id": "henaojara|genres",
+            "type": "Henaojara",
+            "name": "Henaojara",
+            "extra": [
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "aenime",
+                  "anime-latino",
+                  "artes-marciales",
+                  "aventura",
+                  "aventuras",
+                  "blu-ray",
+                  "carreras",
+                  "castellano",
+                  "ciencia-ficcion",
+                  "comedia",
+                  "comida",
+                  "cyberpunk",
+                  "demencia",
+                  "dementia",
+                  "demonios",
+                  "deportes",
+                  "drama",
+                  "ecchi",
+                  "escolares",
+                  "escuela",
+                  "espacial",
+                  "fantasia",
+                  "gore",
+                  "harem",
+                  "historia-paralela",
+                  "historico",
+                  "horror",
+                  "infantil",
+                  "josei",
+                  "juegos",
+                  "latino",
+                  "lucha",
+                  "magia",
+                  "mecha",
+                  "militar",
+                  "misterio",
+                  "monogatari",
+                  "musica",
+                  "parodia",
+                  "parodias",
+                  "policia",
+                  "psicologico",
+                  "recuentos-de-la-vida",
+                  "recuerdos-de-la-vida",
+                  "romance",
+                  "samurai",
+                  "seinen",
+                  "shojo",
+                  "shonen",
+                  "shoujo",
+                  "shounen",
+                  "shounen-ai",
+                  "sobrenatural",
+                  "superpoderes",
+                  "suspenso",
+                  "terror",
+                  "vampiros",
+                  "yaoi",
+                  "yuri"
+                ],
+                "optionsLimit": 1,
+                "isRequired": true
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
             "id": "animeflv|onair",
             "type": "AnimeFLV",
             "name": "On Air"
@@ -288,6 +449,11 @@
           {
             "id": "animeav1|onair",
             "type": "AnimeAV1",
+            "name": "On Air"
+          },
+          {
+            "id": "henaojara|onair",
+            "type": "Henaojara",
             "name": "On Air"
           },
           {
@@ -324,6 +490,7 @@
           "tt",
           "animeflv:",
           "animeav1:",
+          "henaojara:",
           "tmdb:",
           "anilist:",
           "kitsu:",
@@ -376,6 +543,34 @@
           "issuer": "https://stremio-addons.net",
           "signature": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..bukFRYB8W_R0x-j_ULi9eA.7II4HGscJIjpv6TJVDBGrLgaGx8K46j9nx6UT3Cb2jTXq_FCcJLFSHLsYKe0LG9NgNgo5tdmzgEhoWdUVU-UJc-fBivKTFbBP5EN7HkgmELkedoqRITFRxjLh_Am7CC8.s800KCeo0aFXP6oHCdyfwA"
         }
+      }
+    },
+    {
+      "transportUrl": "https://pigamer37.github.io/stremio/berserk/manifest.json",
+      "transportName": "http",
+      "manifest": {
+        "id": "com.berserk.addon",
+        "version": "1.0.0",
+        "name": "Berserk",
+        "logo": "https://gcdn.thunderstore.io/live/repository/icons/GutBerkEntertainment-BerserkSoundtrack-1.2.0.png.256x256_q95_crop.png",
+        "description": "A catalog of all multimedia content related to the anime/manga series Berserk.",
+        "catalogs": [
+          {
+            "id": "berserk",
+            "type": "Berserk",
+            "name": "Berserk"
+          }
+        ],
+        "resources": [
+          "catalog"
+        ],
+        "types": [
+          "movie",
+          "series"
+        ],
+        "idPrefixes": [
+          "tt"
+        ]
       }
     },
     {
