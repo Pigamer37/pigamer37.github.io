@@ -22,6 +22,11 @@
           "url": "stremio:///detail/series/tmdb:35935"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu metadata",
+          "url": "stremio:///detail/series/kitsu:24"
+        },
+        {
           "category": "Open in",
           "name": "TMDB",
           "url": "https://www.themoviedb.org/tv/35935"
@@ -30,6 +35,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt0318871"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk"
         },
         {
           "category": "Genres",
@@ -80,6 +90,11 @@
           "url": "stremio:///detail/movie/tmdb:113082"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu metadata",
+          "url": "stremio:///detail/movie/kitsu:6084"
+        },
+        {
           "category": "Berserk: The Golden Age Arc",
           "name": "Berserk: The Golden Age Arc II - The Battle for Doldrey",
           "url": "stremio:///detail/movie/tt2358911"
@@ -103,6 +118,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt2210479"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk-ougon-jidaihen-i-haou-no-tamago"
         },
         {
           "category": "Genres",
@@ -158,6 +178,11 @@
           "url": "stremio:///detail/movie/tmdb:118412"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu metadata",
+          "url": "stremio:///detail/movie/kitsu:6664"
+        },
+        {
           "category": "Berserk: The Golden Age Arc",
           "name": "Berserk: The Golden Age Arc I - The Egg of the King",
           "url": "stremio:///detail/movie/tt2210479"
@@ -181,6 +206,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt2358911"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk-ougon-jidaihen-ii-doldrey-kouryaku"
         },
         {
           "category": "Genres",
@@ -236,6 +266,11 @@
           "url": "stremio:///detail/movie/tmdb:144288"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu metadata",
+          "url": "stremio:///detail/movie/kitsu:6665"
+        },
+        {
           "category": "Berserk: The Golden Age Arc",
           "name": "Berserk: The Golden Age Arc I - The Egg of the King",
           "url": "stremio:///detail/movie/tt2210479"
@@ -259,6 +294,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt2358913"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk-ougon-jidaihen-iii-kourin"
         },
         {
           "category": "Genres",
@@ -314,6 +354,11 @@
           "url": "stremio:///detail/movie/tmdb:211057"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu metadata",
+          "url": "stremio:///detail/movie/kitsu:46323"
+        },
+        {
           "category": "Berserk: The Golden Age Arc",
           "name": "Berserk: The Golden Age Arc I - The Egg of the King",
           "url": "stremio:///detail/movie/tt2210479"
@@ -337,6 +382,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt22445494"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk-ougan-jidai-hen-memorial-edition"
         },
         {
           "category": "Genres",
@@ -397,6 +447,11 @@
           "url": "stremio:///detail/series/tmdb:66053"
         },
         {
+          "category": "Open in Stremio",
+          "name": "Kitsu",
+          "url": "stremio:///detail/series/kitsu:11655"
+        },
+        {
           "category": "Open in",
           "name": "TMDB",
           "url": "https://www.themoviedb.org/tv/66053"
@@ -405,6 +460,11 @@
           "category": "Open in",
           "name": "IMDB",
           "url": "https://www.imdb.com/title/tt5847454"
+        },
+        {
+          "category": "Open in",
+          "name": "Kitsu",
+          "url": "https://kitsu.app/anime/berserk-2016"
         },
         {
           "category": "Genres",
