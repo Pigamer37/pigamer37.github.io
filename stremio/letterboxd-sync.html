@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sync Letterboxd to Stremio</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sync your Letterboxd watched and loved movies with Stremio" />
+<!-- Social media stuff -->
+    <meta property="og:title" content="Sync Letterboxd to Stremio" />
+    <meta property="og:description" content="Sync your Letterboxd watched and loved movies with Stremio" />
+    <meta property="og:image" content="/images/twitter_preview.png" />
+    <meta property="og:image:alt" content="Preview image" />
+    
+    <meta name="twitter:title" content="Sync Letterboxd to Stremio" />
+    <meta name="twitter:description" content="Sync your Letterboxd watched and loved movies with Stremio" />
+    <meta name="twitter:url" content="/?src=twitter" />
+    <meta name="twitter:image:src" content="/images/twitter_preview.png" />
+    <meta name="twitter:image:alt" content="27 different home appliances" />
+    <meta name="twitter:creator" content="@KBs__Lucas" />
+    <meta name="twitter:site" content="@KBs__Lucas" />
+<!-- Social media end -->
+    <link href="/window.css" rel="stylesheet" type="text/css" media="all">
+    <meta name="theme-color" content="#ff9933" />
+    <link href="/styles/UI.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="canonical" href="https://kbs-lucas.nekoweb.org/Sync-Letterboxd-to-Stremio" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/RSS.xml">
+    <script src="/scripts/user-color.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="window" id="navigation" role="menubar" tabindex="0">
+        <div class="title-bar">
+          <span class="title">Site Content Navigation</span>
+          <div class="buttons">
+            <button tabindex="-1">_</button>
+            <button tabindex="-1">&#x26F6;</button>
+            <button tabindex="-1">✕</button>
+          </div>
+        </div>
+        <div class="content">
+          <ul role="list">
+            <li><a class="no-external" href="/index" role="menuitem" tabindex="0" style="margin:1ch">Home</a>
+            <li><a class="no-external" href="/es" hreflang="es-ES" lang="es-ES" role="menuitem" tabindex="0" style="margin: 1ch">Página en Español</a>
+            <li><a class="no-external" href="/posts" role="menuitem" tabindex="0" style="margin:1ch">Posts</a>
+            <li><a class="no-external" href="/socials" role="menuitem" tabindex="0" style="margin:1ch">Socials/Contact</a>
+            <li><a class="no-external" href="/about" role="menuitem" tabindex="0" style="margin:1ch">About</a>
+            <li><a class="no-external" href="#footer" role="menuitem" tabindex="0" style="margin:1ch">More Info</a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+    <style>form{display:flex;flex-direction:column;align-content:center;flex-wrap:wrap;& p,& > span,& > div{width:clamp(60px,100%,40rem);}& button{width:100%}}fieldset{box-sizing:border-box;display:flex;flex-direction:column;width:clamp(60px,100%,40rem);line-height:1.2;& input[type="text"],& input[type="url"],& input[type="email"],& input[type="number"]{width:100%;}& label{margin-block-end:1rem;&.half-w{width:50%;}}}textarea{tab-size:2;resize:vertical;width:100%;} #res-box{margin-block-end:1rem;background-color:rgb(13 18 28);border:1px solid light-dark(white, black);overflow:hidden;border-radius:0 0 1rem 1rem;& label{margin-inline:14px}& label textarea{width:calc(100% - 28px);resize:none;margin-inline:14px;}& #copy,#fileDwld,#share{font-weight:bold;border:.1em solid black;height:max(1rem,32px);background-color:blue;color:white;}}label:has(input,textarea,select){&.recommended:before{content:"+ ";color:blue}}/*#copy:before{content:'';mask-image: url(https://developer.mozilla.org/static/media/clippy.92fffda9d37d9c3a3b37.svg);}*/
+    li.todo{&::marker{content:counter(list-item)". [   ] "}&.done{&::marker{content:counter(list-item)". [✓] ";color:green}}&.wont{&::marker{content:counter(list-item)". [✗] ";color:red}}</style>
+    <h1 style="display:flex;justify-content:center;">Sync Letterboxd to Stremio</h1>
+     <article class="window" id="main_win">
+        <div class="title-bar">
+          <span class="title">Sync Letterboxd to Stremio<noscript style="color:red">JavaScript is off</noscript></span>
+          <div class="buttons">
+            <button tabindex="-1">_</button>
+            <button tabindex="-1">&#x26F6;</button>
+            <button tabindex="-1">✕</button>
+          </div>
+        </div>
+        <div class="content">
+        <noscript><p style="color:red;margin-block-end:0.625rem;">JavaScript is off, this won't load or work without it... sorry!</p></noscript>
+        <form id="Letterboxd">
+          <fieldset id="Stremio"><legend>Stremio account</legend>
+            <p>Login using an authentication key</p><ul><li> Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser. </li><li> Open the developer console and paste the follow code snippet: <code>JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
+            <label class="recommended">Your Stremio authKey <input id="authKey" type="text" autocomplete="off" placeholder="a84M1lWI9l5Ty7SZmbYy13_yaGAmigHtzZnvM7qbeP0=" minlength="44" maxlength="46" style="width:46ch;field-sizing:content"></label>
+          </fieldset>
+          <fieldset name="channel" id="watchData"><legend>Watch data</legend>
+            <label class="recommended">Link to the .xml file where your feed is available <input id="rssURL" type="url" autocomplete="url" inputmode="url" placeholder="https://letterboxd.com/username/rss/"></label>
+            <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</span>
+            <label>Local RSS file (doesn't get uploaded anywhere) <input type="file" id="localRSS"><div class="dropZone">Or drop file here</div></label>
+          </fieldset>
+        </form>
+        <script>const authKey=document.getElementById("authKey");
+        authKey.addEventListener('change', (event)=>{
+          authKey.value=authKey.value.trim();
+          if(authKey.value.startsWith("'"))authKey.value=authKey.value.slice(1);
+          if(authKey.value.endsWith("'"))authKey.value=authKey.value.slice(0,-1);
+          if(authKey.value===""){authKey.setCustomValidity("Auth key can't be empty");authKey.reportValidity();}
+          else{authKey.setCustomValidity("");}
+        });
+        let xml;
+        //fetching existing feed
+        const fetchFeed=document.getElementById("fetchFeed");
+        const rssURL=document.getElementById("rssURL");
+        fetchFeed.addEventListener('click',(e)=>{
+          xml=undefined;
+          if(rssURL.value===""){rssURL.setCustomValidity('Please provide a URL to the feed file');rssURL.reportValidity();return;}
+          else if(!rssURL.checkValidity()){rssURL.reportValidity();return;}
+          fetchFeed.disabled=true;fetchFeed.textContent="Fetching feed...";
+          fetch(rssURL.value.trim()).then(res=>{
+            if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.text()}}
+          ).then(text=>{
+            xml=text;
+            parseFeed(xml);
+            fetchFeed.disabled=false;fetchFeed.textContent="Fetched correctly!";
+          }).catch(e=>{
+            fetchFeed.disabled=false;fetchFeed.textContent="Failed to fetch feed";
+            console.log("Caught error during feed fetching: ",e);
+          });
+        });
+
+        const localRSS=document.getElementById("localRSS");
+        localRSS.addEventListener('change',(e)=>{
+          xml=undefined;
+          if(e.files.length==0){e.setCustomValidity('Please select a file');e.reportValidity();return;}
+          const f=e.dataTransfer.files[0];
+          if(f){
+            if(!f.name.endsWith('.xml')){alert("Invalid file extension");return}
+            else{const read=new FileReader();
+              read.onload=(ev)=>{xml = ev.target.result; parseFeed(xml)};
+              read.readAsText(f);
+            }
+          }else{e.setCustomValidity('Error getting file');e.reportValidity();return;}
+        });
+
+        document.querySelectorAll('.dropZone').forEach(dz=>{
+          dz.style.display='revert';
+          dz.addEventListener('dragover',(ev)=>{ev.preventDefault()});
+          dz.addEventListener('dragenter',(ev)=>{ev.target.classList.add("dragOver");});
+          dz.addEventListener('dragleave',(ev)=>{ev.target.classList.remove("dragOver");});
+          dz.addEventListener('drop',(ev)=>{ev.preventDefault();ev.target.classList.remove("dragOver");
+            if(ev.dataTransfer.files.length>0){
+              const fInp=ev.target.parentNode.getElementsByTagName('input')[0];
+              fInp.files=ev.dataTransfer.files;
+              fInp.dispatchEvent(new Event("change"));
+            }else{
+              const s=ev.dataTransfer.items[0];
+              if(s?.kind!=='string'){alert("Unexpected drop");return}
+              else{s.getAsString((str)=>{xml=str;parseFeed(xml)})}
+            }
+            if(ev.dataTransfer.items){ev.dataTransfer.items.clear()}
+          });
+        });
+
+        function reflectFeedOnHTML(movieArray){
+          if(!movieArray || !Array.isArray(movieArray) || movieArray.length==0){return}
+          let watchData = document.getElementById("watchData");
+          let fieldList = document.getElementById("movieListFieldset");
+          let list;
+          if(!fieldList){
+            fieldList = document.createElement("fieldset");
+            fieldList.id = "movieListFieldset";
+            const legend = document.createElement("legend");legend.textContent = "Movies in feed";
+            fieldList.appendChild(legend);
+            list = document.createElement("ul");list.id = "movieList";
+            fieldList.appendChild(list);
+            watchData.after(fieldList);
+          }
+          list = document.getElementById("movieList");
+          list.replaceChildren();//clear previous entries if any
+          movieArray.forEach(movie=>{
+            let item = document.createElement("li");
+            let data = document.createElement("span");
+            let buttons = document.createElement("span");
+            let link = document.createElement("a");link.href=movie.link;link.textContent=movie.name;
+            data.appendChild(link);
+            if(movie.watchedDate){data.innerHTML+=` 👁️ ${movie.watchedDate}`;}
+            let markWatchedBtn = document.createElement("button");markWatchedBtn.textContent="Mark as watched on Stremio";
+            markWatchedBtn.addEventListener('click',()=>{
+              console.log("Marking as watched:",movie.name);
+              getIMDBIDfromLetterboxdURL(movie.link).then(imdbID=>{
+                console.log("Got IMDb ID: ",imdbID);
+                alert(imdbID);
+                return getMovieState(authKey.value,imdbID)
+              })
+              .then(status=>{
+                return markWatched(authKey.value,status.result);
+              });
+            });
+            buttons.appendChild(markWatchedBtn);
+            if(movie.like){
+              data.innerHTML+=" (🧡)";
+              let markLovedBtn = document.createElement("button");markLovedBtn.textContent="Mark as loved on Stremio";
+              markLovedBtn.addEventListener('click',()=>{console.log("Marking as loved: ",movie);});
+              buttons.appendChild(markLovedBtn);
+            }
+            buttons.style.display="flex";buttons.style.gap="0.5ch";
+            Array.from(buttons.children).forEach(btn=>btn.classList.add("blue-button","y2k"));
+            item.appendChild(data);item.appendChild(buttons);
+            list.appendChild(item);
+          });
+          //watchData.after(list);
+        }
+
+        /* FROM RSS FEED */
+        function parseFeed(rss){
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(rss, "application/xml");
+          const channel = doc.getElementsByTagName("channel")[0];
+          const base = channel.getElementsByTagName("link")[0].textContent;
+
+          let items = Array.from(channel.getElementsByTagName("item"));
+
+          let parsed = items.map((e)=>{
+            return {
+              link: e.getElementsByTagName("link")[0]?.textContent.replace(base,"https://letterboxd.com/"), //remove user
+              like: (e.getElementsByTagName("letterboxd:memberLike")[0]?.textContent == "Yes"),
+              watchedDate: e.getElementsByTagName("letterboxd:watchedDate")[0]?.textContent,
+              tmdbID: e.getElementsByTagName("tmdb:movieId")[0]?.textContent,
+              name: e.getElementsByTagName("letterboxd:filmTitle")[0]?.textContent
+            }
+          }).filter(e=>!e.link.includes("/list/"))
+
+          reflectFeedOnHTML(parsed);
+        }
+
+        /* FROM watched.csv exported from letterboxd */
+        function parseCSV(csv){
+          const lettEntries = csv.split("\n");
+
+          return lettEntries.map((entry)=>{
+            const dateIdx = entry.indexOf(",");
+            let date = entry.substring(0,dateIdx);
+            const parsedDate = Date.parse(date);
+            let nameIdx = entry.indexOf(",",dateIdx+1);
+            let name = entry.substring(dateIdx+1,nameIdx);
+            if(name.startsWith('"')){
+                nameIdx = entry.indexOf('"',dateIdx+2)+1;
+                name = entry.substring(dateIdx+2,nameIdx-1);
+            }
+            const yearIdx = entry.indexOf(",",nameIdx+1);
+            let year = entry.substring(nameIdx+1,yearIdx);
+            let URI = entry.substring(yearIdx+1);
+            return {
+              watchedDate: date,
+              link: URI,
+              name
+            }
+          })
+        }
+
+        function processFetch(fetchPromise){
+          return fetchPromise.then(res=>{if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}})
+          .catch(e=>console.log("Caught error: ",e));
+        }
+
+        async function getIMDBIDfromLetterboxdURL(url){
+          headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "Accept": "text/html",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Connection": "keep-alive",
+            "Cache-Control": "max-age=0",
+          }
+          return fetch(url,{headers}).then(res=>{
+            if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.text()}}
+          ).then(text=>{
+            alert(text.match(/tt\d+/));
+            return text.match(/tt\d+/)[0]
+          }).catch(e=>console.log("Caught error: ",e))
+        }
+
+        function getMovieState(authKey,imdbID){
+          /* Get current state */
+          return processFetch(fetch("https://api.strem.io/api/datastoreGet", {
+            "headers": {
+              "content-type": "text/plain;charset=UTF-8",
+              "sec-ch-ua": "\"Chromium\";v=\"148\", \"Opera\";v=\"132\", \"Not/A)Brand\";v=\"99\"",
+              "sec-ch-ua-mobile": "?0",
+              "sec-ch-ua-platform": "\"Linux\""
+            },
+            "referrer": "https://web.stremio.com/",
+            "body": `{"authKey":"${authKey}","collection":"libraryItem","ids":["${imdbID}"],"all":false}`,
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "omit"
+          })); //obj.result[0] has _id and state properties
+        }
+
+        function markWatched(authKey,status){
+          /* Mark as watched */
+          status = status.map(e=>{
+            e.state.lastWatched = new Date(e.state.lastWatched).toJSON() || new Date().toJSON();
+            e.state.timesWatched = (e.state.timesWatched) ? e.state.timesWatched+1 : 1;
+            e.state.video_id = null;
+            e.state.watched = null;
+            e.state.episode = undefined;
+            e.state.episode = undefined;
+            return e
+          });
+
+          return processFetch(fetch("https://api.strem.io/api/datastorePut", {
+            "headers": {
+              "content-type": "text/plain;charset=UTF-8",
+              "Referer": "https://web.stremio.com/"
+            },
+            "body": `{"authKey":"${authKey}","collection":"libraryItem","changes":${JSON.stringify(status)}}`,
+            "method": "POST"
+          }));
+        }
+
+        function markLoved(authKey,imdbID){
+          /* Mark as loved */
+          return processFetch(fetch("https://likes.stremio.com/api/send", {
+            "headers": {
+              "content-type": "application/json",
+              "sec-ch-ua": "\"Chromium\";v=\"148\", \"Opera\";v=\"132\", \"Not/A)Brand\";v=\"99\"",
+              "sec-ch-ua-mobile": "?0",
+              "sec-ch-ua-platform": "\"Linux\""
+            },
+            "referrer": "https://web.stremio.com/",
+            "body": `{"authToken":"${authKey}","mediaId":"${imdbID}","mediaType":"movie","status":"loved"}`,
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "omit"
+          }));
+        }
+        </script>
+        <p>Privacy notice: This demo runs entirely within your browser. In other words, no data is sent to me, the code is sent to your browser and runs locally. You could theoretically load the page, cut your network connection and then start it.</p>
+        </div>
+      </article>
+    </main>
+    <footer id="footer">
+      <p>This webpage's HTML is licensed under a MIT license, CSS and site contents are protected by copyright&copy; law. <br></p>
+      <p><a href="#">Back to top</a></p>
+    </footer>
+    <script defer src="/scripts/window.js"></script>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('pigamer37', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Tip Me',
+        'floating-chat.donateButton.background-color': getComputedStyle(document.body).getPropertyValue('--accent-orange'),
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+  </body>
+</html>
