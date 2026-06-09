@@ -165,20 +165,34 @@
             let markWatchedBtn = document.createElement("button");markWatchedBtn.textContent="Mark as watched on Stremio";
             markWatchedBtn.addEventListener('click',()=>{
               console.log("Marking as watched:",movie.name);
+              markWatchedBtn.disabled=true;markWatchedBtn.textContent="Processing...";
               getIMDBIDfromLetterboxdURL(movie.link).then(imdbID=>{
                 console.log("Got IMDb ID: ",imdbID);
-                alert(imdbID);
                 return getMovieState(authKey.value,imdbID)
               })
               .then(status=>{
-                return markWatched(authKey.value,status.result);
-              });
+                return markWatched(authKey.value,status.result)
+                .then((e)=>{markWatchedBtn.disabled=false;markWatchedBtn.textContent="Marked as watched!"})
+              }).catch((e)=>{
+                markWatchedBtn.disabled=false;markWatchedBtn.textContent="Failed to mark as watched";
+                console.log("Caught error during marking as watched:",e);
+              })
             });
             buttons.appendChild(markWatchedBtn);
             if(movie.like){
               data.innerHTML+=" (🧡)";
               let markLovedBtn = document.createElement("button");markLovedBtn.textContent="Mark as loved on Stremio";
-              markLovedBtn.addEventListener('click',()=>{console.log("Marking as loved: ",movie);});
+              markLovedBtn.addEventListener('click',()=>{
+                console.log("Marking as loved: ",movie);
+                getIMDBIDfromLetterboxdURL(movie.link).then(imdbID=>{
+                  console.log("Got IMDb ID: ",imdbID);
+                  markLovedBtn.disabled=true;markLovedBtn.textContent="Processing...";
+                  return markLoved(authKey.value,imdbID).then((e)=>{markLovedBtn.disabled=true;markLovedBtn.textContent="Marked as loved!"})
+                }).catch((e)=>{
+                  markLovedBtn.disabled=false;markLovedBtn.textContent="Failed to mark as loved";
+                  console.log("Caught error during marking as loved:",e);
+                })
+              });
               buttons.appendChild(markLovedBtn);
             }
             buttons.style.display="flex";buttons.style.gap="0.5ch";
@@ -252,7 +266,7 @@
           return fetch(url,{headers}).then(res=>{
             if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.text()}}
           ).then(text=>{
-            alert(text.match(/tt\d+/));
+            // alert(text.match(/tt\d+/));
             return text.match(/tt\d+/)[0]
           }).catch(e=>console.log("Caught error: ",e))
         }
