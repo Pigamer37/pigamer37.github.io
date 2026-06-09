@@ -119,12 +119,15 @@
         const localRSS=document.getElementById("localRSS");
         localRSS.addEventListener('change',(e)=>{
           xml=undefined;
-          if(e.files.length==0){e.setCustomValidity('Please select a file');e.reportValidity();return;}
-          const f=e.dataTransfer.files[0];
+          if(e.target.files.length==0){e.setCustomValidity('Please select a file');e.reportValidity();return;}
+          const f=e.target.files[0];
           if(f){
-            if(!f.name.endsWith('.xml')){alert("Invalid file extension");return}
+            if(!f.name.endsWith('.xml')&&!f.name.endsWith('.csv')){alert("Invalid file extension");return}
             else{const read=new FileReader();
-              read.onload=(ev)=>{xml = ev.target.result; parseFeed(xml)};
+              read.onload=(ev)=>{
+                if(f.name.endsWith('.xml')){xml = ev.target.result; parseFeed(xml)}
+                else {parseCSV(ev.target.result)}
+              };
               read.readAsText(f);
             }
           }else{e.setCustomValidity('Error getting file');e.reportValidity();return;}
@@ -163,8 +166,9 @@
             let loveAllBtn = document.createElement("button");loveAllBtn.textContent="Mark all 🧡 as 💜"
             watchAllBtn.addEventListener('click',(e)=>{
               console.log("Marking all as watched");
-              watchAllBtn.disabled=true;watchAllBtn.textContent="Processing...";
-              let progress = document.createElement("progress");progress.max=movieArray.length;progress.value=0;
+              watchAllBtn.disabled=true;watchAllBtn.textContent="Processing...";watchAllBtn.ariaBusy="true"
+              let progress = document.createElement("progress");progress.max=movieArray.length;progress.value=0;progress.id="watchProgress"
+              watchAllBtn.setAttribute("aria-describedby",progress.id)
               watchAllBtn.after(progress);
 
               let succCount=0, failCount=0, promArray=[];
@@ -179,19 +183,21 @@
                   console.log("Caught error during marking as watched:",ex);
                   failCount+=1
                 }).finally(() => {
+                  progress.textContent=`${(failCount+succCount)/movieArray.length*100}%`
                   progress.value = failCount+succCount;
                 }))
               }
               Promise.allSettled(promArray).then((results) =>{
-                watchAllBtn.disabled=false;watchAllBtn.textContent=`Done marking as 👁️ (${succCount}/${movieArray.length}) succeeded`;
-                progress.remove();
+                watchAllBtn.ariaBusy="false";watchAllBtn.disabled=false;watchAllBtn.textContent=`Done marking as 👁️ (${succCount}/${movieArray.length}) succeeded`;
+                watchAllBtn.setAttribute("aria-describedby","");progress.remove();
               });
             });
             loveAllBtn.addEventListener('click',(e)=>{
               console.log("Marking all as liked");
-              loveAllBtn.disabled=true;loveAllBtn.textContent="Processing...";
+              loveAllBtn.disabled=true;loveAllBtn.textContent="Processing...";loveAllBtn.ariaBusy="true";
               let likedArray = movieArray.filter((mov)=>mov.like)
-              let progress = document.createElement("progress");progress.max=likedArray.length;progress.value=0;
+              let progress = document.createElement("progress");progress.max=likedArray.length;progress.value=0;progress.id="loveProgress"
+              loveAllBtn.setAttribute("aria-describedby",progress.id)
               loveAllBtn.after(progress);
 
               let succCount=0, failCount=0, promArray=[];
@@ -204,12 +210,13 @@
                   console.log("Caught error during marking as loved:",ex);
                   failCount+=1
                 }).finally(() => {
+                  progress.textContent=`${(failCount+succCount)/likedArray.length*100}%`
                   progress.value = failCount+succCount;
                 }))
               }
               Promise.allSettled(promArray).then((results) =>{
-                loveAllBtn.disabled=false;loveAllBtn.textContent=`Done marking all 🧡 as 💜 (${succCount}/${likedArray.length}) succeeded`;
-                progress.remove();
+                loveAllBtn.ariaBusy="false";loveAllBtn.disabled=false;loveAllBtn.textContent=`Done marking all 🧡 as 💜 (${succCount}/${likedArray.length}) succeeded`;
+                loveAllBtn.setAttribute("aria-describedby","");progress.remove();
               });
             });
             list = document.createElement("ul");list.id = "movieList";list.style.paddingInlineStart="2.5ch"
@@ -311,9 +318,9 @@
 
         /* FROM watched.csv exported from letterboxd */
         function parseCSV(csv){
-          const lettEntries = csv.split("\n");
+          const lettEntries = csv.split("\n").slice(1); //slice header
 
-          return lettEntries.map((entry)=>{
+          let parsed = lettEntries.map((entry)=>{
             const dateIdx = entry.indexOf(",");
             let date = entry.substring(0,dateIdx);
             const parsedDate = Date.parse(date);
@@ -332,10 +339,13 @@
               name
             }
           })
+
+          reflectFeedOnHTML(parsed);
         }
 
         function processFetch(fetchPromise){
-          return fetchPromise.then(res=>{if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}})
+          return fetchPromise
+          .then(res=>{if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}})
           .catch(e=>{console.log("Caught error: ",e); throw e});
         }
 
@@ -352,7 +362,7 @@
           ).then(text=>{
             // alert(text.match(/tt\d+/));
             return text.match(/tt\d+/)[0]
-          }).catch(e=>console.log("Caught error: ",e))
+          })
         }
 
         async function getIMDBIDfromTMDBID(tmdbID, tmdbRAT){
@@ -369,7 +379,7 @@
             if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}}
           ).then(ids=>{
             return ids.imdb_id
-          }).catch(e=>console.log("Caught error: ",e))
+          })
         }
 
         async function getIMDBID(movie){
