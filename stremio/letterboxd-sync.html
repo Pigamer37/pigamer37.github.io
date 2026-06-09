@@ -52,7 +52,7 @@
       </nav>
     </header>
     <main>
-    <style>form{display:flex;flex-direction:column;align-content:center;flex-wrap:wrap;& p,& > span,& > div{width:clamp(60px,100%,40rem);}& button{width:100%}}fieldset{box-sizing:border-box;display:flex;flex-direction:column;width:clamp(60px,100%,40rem);line-height:1.2;& input[type="text"],& input[type="url"],& input[type="email"],& input[type="number"]{width:100%;}& label{margin-block-end:1rem;&.half-w{width:50%;}}}textarea{tab-size:2;resize:vertical;width:100%;} #res-box{margin-block-end:1rem;background-color:rgb(13 18 28);border:1px solid light-dark(white, black);overflow:hidden;border-radius:0 0 1rem 1rem;& label{margin-inline:14px}& label textarea{width:calc(100% - 28px);resize:none;margin-inline:14px;}& #copy,#fileDwld,#share{font-weight:bold;border:.1em solid black;height:max(1rem,32px);background-color:blue;color:white;}}label:has(input,textarea,select){&.recommended:before{content:"+ ";color:blue}}/*#copy:before{content:'';mask-image: url(https://developer.mozilla.org/static/media/clippy.92fffda9d37d9c3a3b37.svg);}*/
+    <style>form{display:flex;flex-direction:column;align-content:center;align-items:center;flex-wrap:wrap;& p,& > span,& > div{width:clamp(60px,100%,40rem);}& button{width:100%}}fieldset{box-sizing:border-box;display:flex;flex-direction:column;width:clamp(60px,100%,40rem);line-height:1.2;& input[type="text"],& input[type="url"],& input[type="email"],& input[type="number"]{width:100%;}& label{margin-block-end:1rem;&.half-w{width:50%;}}}textarea{tab-size:2;resize:vertical;width:100%;} #res-box{margin-block-end:1rem;background-color:rgb(13 18 28);border:1px solid light-dark(white, black);overflow:hidden;border-radius:0 0 1rem 1rem;& label{margin-inline:14px}& label textarea{width:calc(100% - 28px);resize:none;margin-inline:14px;}& #copy,#fileDwld,#share{font-weight:bold;border:.1em solid black;height:max(1rem,32px);background-color:blue;color:white;}}label:has(input,textarea,select){&.recommended:before{content:"+ ";color:blue}}/*#copy:before{content:'';mask-image: url(https://developer.mozilla.org/static/media/clippy.92fffda9d37d9c3a3b37.svg);}*/
     li.todo{&::marker{content:counter(list-item)". [   ] "}&.done{&::marker{content:counter(list-item)". [✓] ";color:green}}&.wont{&::marker{content:counter(list-item)". [✗] ";color:red}}</style>
     <h1 style="display:flex;justify-content:center;">Sync Letterboxd to Stremio</h1>
      <article class="window" id="main_win">
@@ -69,10 +69,14 @@
         <form id="Letterboxd">
           <fieldset id="Stremio"><legend>Stremio account</legend>
             <p>Login using an authentication key</p><ul><li> Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser. </li><li> Open the developer console and paste the follow code snippet: <code>JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
-            <label class="recommended">Your Stremio authKey <input id="authKey" type="text" autocomplete="off" placeholder="a84M1lWI9l5Ty7SZmbYy13_yaGAmigHtzZnvM7qbeP0=" minlength="44" maxlength="46" style="width:46ch;field-sizing:content"></label>
+            <label>Your Stremio authKey <input id="authKey" type="text" autocomplete="off" placeholder="a84M1lWI9l5Ty7SZmbYy13_yaGAmigHtzZnvM7qbeP0=" minlength="44" maxlength="46" style="width:46ch;field-sizing:content" required></label>
+          </fieldset>
+          <fieldset id="TMDB"><legend>TMDB API</legend>
+            <p>You will probably need to enter your own TMDB API Read Access Token to transform from Letterboxd to IMDB IDs. You can get one for free at <a href="https://www.themoviedb.org/settings/api" target="_blank">themoviedb.org</a></p>
+            <label class="recommended">Your TMDB API key <textarea id="tmdbKey" class="CascadiaCode" type="text" autocomplete="off" placeholder="82ude923791618e1yduw1821d9hw1u***************************************************************************************************************************************************************************************************************" minlength="237" maxlength="237"></textarea></label>
           </fieldset>
           <fieldset name="channel" id="watchData"><legend>Watch data</legend>
-            <label class="recommended">Link to the .xml file where your feed is available <input id="rssURL" type="url" autocomplete="url" inputmode="url" placeholder="https://letterboxd.com/username/rss/"></label>
+            <label>Link to the .xml file where your feed is available <input id="rssURL" type="url" autocomplete="url" inputmode="url" placeholder="https://letterboxd.com/username/rss/"></label>
             <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</span>
             <label>Local RSS file (doesn't get uploaded anywhere) <input type="file" id="localRSS"><div class="dropZone">Or drop file here</div></label>
           </fieldset>
@@ -85,6 +89,12 @@
           if(authKey.value===""){authKey.setCustomValidity("Auth key can't be empty");authKey.reportValidity();}
           else{authKey.setCustomValidity("");}
         });
+
+        const tmdbKey=document.getElementById("tmdbKey");
+        tmdbKey.style.height = "1px";
+        tmdbKey.style.height = (tmdbKey.scrollHeight) + "px";
+        tmdbKey.style.resize = "none";
+
         let xml;
         //fetching existing feed
         const fetchFeed=document.getElementById("fetchFeed");
@@ -148,8 +158,62 @@
             fieldList = document.createElement("fieldset");
             fieldList.id = "movieListFieldset";
             const legend = document.createElement("legend");legend.textContent = "Movies in feed";
-            fieldList.appendChild(legend);
-            list = document.createElement("ul");list.id = "movieList";
+            fieldList.appendChild(legend);fieldList.style.width="100%";
+            let watchAllBtn = document.createElement("button");watchAllBtn.textContent="Mark all as 👁️"
+            let loveAllBtn = document.createElement("button");loveAllBtn.textContent="Mark all 🧡 as 💜"
+            watchAllBtn.addEventListener('click',(e)=>{
+              console.log("Marking all as watched");
+              watchAllBtn.disabled=true;watchAllBtn.textContent="Processing...";
+              let progress = document.createElement("progress");progress.max=movieArray.length;progress.value=0;
+              watchAllBtn.after(progress);
+
+              let succCount=0, failCount=0, promArray=[];
+
+              for(let i=0;i<movieArray.length;i++){
+                promArray.push(getIMDBID(movieArray[i]).then(imdbID=>{
+                  console.log("Got IMDb ID:",imdbID);
+                  return getMovieState(authKey.value,imdbID)
+                }).then(status=>{
+                  return markWatched(authKey.value,status.result).then(e=>succCount+=1)
+                }).catch((ex)=>{
+                  console.log("Caught error during marking as watched:",ex);
+                  failCount+=1
+                }).finally(() => {
+                  progress.value = failCount+succCount;
+                }))
+              }
+              Promise.allSettled(promArray).then((results) =>{
+                watchAllBtn.disabled=false;watchAllBtn.textContent=`Done marking as 👁️ (${succCount}/${movieArray.length}) succeeded`;
+                progress.remove();
+              });
+            });
+            loveAllBtn.addEventListener('click',(e)=>{
+              console.log("Marking all as liked");
+              loveAllBtn.disabled=true;loveAllBtn.textContent="Processing...";
+              let likedArray = movieArray.filter((mov)=>mov.like)
+              let progress = document.createElement("progress");progress.max=likedArray.length;progress.value=0;
+              loveAllBtn.after(progress);
+
+              let succCount=0, failCount=0, promArray=[];
+
+              for(let i=0;i<likedArray.length;i++){
+                promArray.push(getIMDBID(likedArray[i]).then(imdbID=>{
+                  console.log("Got IMDb ID:",imdbID);
+                  return markLoved(authKey.value,imdbID).then(e=>succCount+=1)
+                }).catch((ex)=>{
+                  console.log("Caught error during marking as loved:",ex);
+                  failCount+=1
+                }).finally(() => {
+                  progress.value = failCount+succCount;
+                }))
+              }
+              Promise.allSettled(promArray).then((results) =>{
+                loveAllBtn.disabled=false;loveAllBtn.textContent=`Done marking all 🧡 as 💜 (${succCount}/${likedArray.length}) succeeded`;
+                progress.remove();
+              });
+            });
+            list = document.createElement("ul");list.id = "movieList";list.style.paddingInlineStart="2.5ch"
+            fieldList.appendChild(watchAllBtn);fieldList.appendChild(loveAllBtn);
             fieldList.appendChild(list);
             watchData.after(fieldList);
           }
@@ -159,45 +223,65 @@
             let item = document.createElement("li");
             let data = document.createElement("span");
             let buttons = document.createElement("span");
+            let flex = document.createElement("div");flex.style.display="flex";flex.style.justifyContent="space-between";flex.style.alignItems="center";
             let link = document.createElement("a");link.href=movie.link;link.textContent=movie.name;
             data.appendChild(link);
             if(movie.watchedDate){data.innerHTML+=` 👁️ ${movie.watchedDate}`;}
-            let markWatchedBtn = document.createElement("button");markWatchedBtn.textContent="Mark as watched on Stremio";
-            markWatchedBtn.addEventListener('click',()=>{
+            let markWatchedBtn = document.createElement("button");markWatchedBtn.textContent="Mark 👁️";markWatchedBtn.dataset["btnType"]="watched";
+            markWatchedBtn.addEventListener('click',(e)=>{
               console.log("Marking as watched:",movie.name);
               markWatchedBtn.disabled=true;markWatchedBtn.textContent="Processing...";
-              getIMDBIDfromLetterboxdURL(movie.link).then(imdbID=>{
-                console.log("Got IMDb ID: ",imdbID);
+              return getIMDBID(movie).then(imdbID=>{
+                console.log("Got IMDb ID:",imdbID);
                 return getMovieState(authKey.value,imdbID)
-              })
-              .then(status=>{
+              }).then(status=>{
                 return markWatched(authKey.value,status.result)
-                .then((e)=>{markWatchedBtn.disabled=false;markWatchedBtn.textContent="Marked as watched!"})
-              }).catch((e)=>{
-                markWatchedBtn.disabled=false;markWatchedBtn.textContent="Failed to mark as watched";
-                console.log("Caught error during marking as watched:",e);
+                .then((e)=>{markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️✔️"})
+              }).catch((ex)=>{
+                markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️❌";
+                console.log("Caught error during marking as watched:",ex);
               })
             });
-            buttons.appendChild(markWatchedBtn);
+            let markLikedBtn = document.createElement("button");markLikedBtn.textContent="Mark 👍";markLikedBtn.dataset["btnType"]="liked";
+            markLikedBtn.addEventListener('click',(e)=>{
+              console.log("Marking as liked:",movie.name);
+              markLikedBtn.disabled=true;markLikedBtn.textContent="Processing...";
+              return getIMDBID(movie).then(imdbID=>{
+                console.log("Got IMDb ID:",imdbID);
+                return getMovieState(authKey.value,imdbID)
+              }).then(status=>{
+                return markLiked(authKey.value,status.result)
+                .then((e)=>{markLikedBtn.disabled=false;markLikedBtn.textContent="👍✔️"})
+              }).catch((ex)=>{
+                markLikedBtn.disabled=false;markLikedBtn.textContent="👍❌";
+                console.log("Caught error during marking as liked:",ex);
+              })
+            });
+            let stremioState = document.createElement("span");stremioState.textContent="Stremio: ";
+            buttons.appendChild(stremioState);
             if(movie.like){
               data.innerHTML+=" (🧡)";
-              let markLovedBtn = document.createElement("button");markLovedBtn.textContent="Mark as loved on Stremio";
-              markLovedBtn.addEventListener('click',()=>{
-                console.log("Marking as loved: ",movie);
-                getIMDBIDfromLetterboxdURL(movie.link).then(imdbID=>{
-                  console.log("Got IMDb ID: ",imdbID);
-                  markLovedBtn.disabled=true;markLovedBtn.textContent="Processing...";
-                  return markLoved(authKey.value,imdbID).then((e)=>{markLovedBtn.disabled=true;markLovedBtn.textContent="Marked as loved!"})
-                }).catch((e)=>{
-                  markLovedBtn.disabled=false;markLovedBtn.textContent="Failed to mark as loved";
-                  console.log("Caught error during marking as loved:",e);
+              let markLovedBtn = document.createElement("button");markLovedBtn.textContent="Mark 💜";markLovedBtn.dataset["btnType"]="loved";
+              markLovedBtn.addEventListener('click',(e)=>{
+                console.log("Marking as loved:",movie.name);
+                markLovedBtn.disabled=true;markLovedBtn.textContent="Processing...";
+                getIMDBID(movie).then(imdbID=>{
+                  console.log("Got IMDb ID:",imdbID);
+                  return markLoved(authKey.value,imdbID).then((e)=>{markLovedBtn.disabled=false;markLovedBtn.textContent="💜✔️"})
+                }).catch((ex)=>{
+                  markLovedBtn.disabled=false;markLovedBtn.textContent="💜❌";
+                  console.log("Caught error during marking as loved:",ex);
                 })
               });
               buttons.appendChild(markLovedBtn);
             }
-            buttons.style.display="flex";buttons.style.gap="0.5ch";
-            Array.from(buttons.children).forEach(btn=>btn.classList.add("blue-button","y2k"));
-            item.appendChild(data);item.appendChild(buttons);
+            buttons.appendChild(markLikedBtn);
+            buttons.appendChild(markWatchedBtn);
+            buttons.style.display="flex";buttons.style.gap="0.5ch";buttons.style.flexShrink="0";
+            Array.from(buttons.children).filter(btn=>btn.tagName==="BUTTON").forEach(btn=>{btn.classList.add("blue-button");btn.style.width="fit-content"});
+            flex.appendChild(data);
+            flex.appendChild(buttons);
+            item.appendChild(flex);
             list.appendChild(item);
           });
           //watchData.after(list);
@@ -252,7 +336,7 @@
 
         function processFetch(fetchPromise){
           return fetchPromise.then(res=>{if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}})
-          .catch(e=>console.log("Caught error: ",e));
+          .catch(e=>{console.log("Caught error: ",e); throw e});
         }
 
         async function getIMDBIDfromLetterboxdURL(url){
@@ -269,6 +353,30 @@
             // alert(text.match(/tt\d+/));
             return text.match(/tt\d+/)[0]
           }).catch(e=>console.log("Caught error: ",e))
+        }
+
+        async function getIMDBIDfromTMDBID(tmdbID, tmdbRAT){
+          const url = `https://api.themoviedb.org/3/movie/${tmdbID}/external_ids`;
+          const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${tmdbRAT}`
+            }
+          };
+
+          return fetch(url, options).then(res=>{
+            if(!res.ok){throw new Error(`Bad response: ${res.status}`)}else{return res.json()}}
+          ).then(ids=>{
+            return ids.imdb_id
+          }).catch(e=>console.log("Caught error: ",e))
+        }
+
+        async function getIMDBID(movie){
+          let res = undefined;
+          if(movie.tmdbID && tmdbKey.value!==""){res = await getIMDBIDfromTMDBID(movie.tmdbID, tmdbKey.value)}
+          if(res) return res
+          else return getIMDBIDfromLetterboxdURL(movie.link);
         }
 
         function getMovieState(authKey,imdbID){
@@ -315,15 +423,21 @@
           return processFetch(fetch("https://likes.stremio.com/api/send", {
             "headers": {
               "content-type": "application/json",
-              "sec-ch-ua": "\"Chromium\";v=\"148\", \"Opera\";v=\"132\", \"Not/A)Brand\";v=\"99\"",
-              "sec-ch-ua-mobile": "?0",
-              "sec-ch-ua-platform": "\"Linux\""
+              "Referer": "https://web.stremio.com/"
             },
-            "referrer": "https://web.stremio.com/",
             "body": `{"authToken":"${authKey}","mediaId":"${imdbID}","mediaType":"movie","status":"loved"}`,
             "method": "POST",
-            "mode": "cors",
-            "credentials": "omit"
+          }));
+        }
+        function markLoved(authKey,imdbID){
+          /* Mark as loved */
+          return processFetch(fetch("https://likes.stremio.com/api/send", {
+            "headers": {
+              "content-type": "application/json",
+              "Referer": "https://web.stremio.com/"
+            },
+            "body": `{"authToken":"${authKey}","mediaId":"${imdbID}","mediaType":"movie","status":"liked"}`,
+            "method": "POST",
           }));
         }
         </script>
