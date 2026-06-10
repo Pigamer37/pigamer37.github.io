@@ -95,7 +95,7 @@
         tmdbKey.style.height = (tmdbKey.scrollHeight) + "px";
         tmdbKey.style.resize = "none";
 
-        let xml;
+        let xml,letterboxdData=[];
         //fetching existing feed
         const fetchFeed=document.getElementById("fetchFeed");
         const rssURL=document.getElementById("rssURL");
@@ -154,27 +154,29 @@
 
         function reflectFeedOnHTML(movieArray){
           if(!movieArray || !Array.isArray(movieArray) || movieArray.length==0){return}
-          let watchData = document.getElementById("watchData");
-          let fieldList = document.getElementById("movieListFieldset");
+          mergeArrays(movieArray)
+          let watchData = document.getElementById("watchData")
+          let fieldList = document.getElementById("movieListFieldset")
           let list;
           if(!fieldList){
-            fieldList = document.createElement("fieldset");
-            fieldList.id = "movieListFieldset";
-            const legend = document.createElement("legend");legend.textContent = "Movies in feed";
-            fieldList.appendChild(legend);fieldList.style.width="100%";
-            let watchAllBtn = document.createElement("button");watchAllBtn.textContent="Mark all as 👁️"
-            let loveAllBtn = document.createElement("button");loveAllBtn.textContent="Mark all 🧡 as 💜"
+            fieldList = document.createElement("fieldset")
+            fieldList.id = "movieListFieldset"
+            const legend = document.createElement("legend");legend.textContent = "Movies in feed"
+            fieldList.appendChild(legend);fieldList.style.width="100%"
+            let watchAllBtn = document.createElement("button");watchAllBtn.textContent=`Mark all (${letterboxdData.length}) as 👁️`
+            const likedArray = letterboxdData.filter((mov)=>mov.like)
+            let loveAllBtn = document.createElement("button");loveAllBtn.textContent=`Mark all 🧡 (${likedArray.length}) as 💜`
             watchAllBtn.addEventListener('click',(e)=>{
               console.log("Marking all as watched");
               watchAllBtn.disabled=true;watchAllBtn.textContent="Processing...";watchAllBtn.ariaBusy="true"
-              let progress = document.createElement("progress");progress.max=movieArray.length;progress.value=0;progress.id="watchProgress"
+              let progress = document.createElement("progress");progress.max=letterboxdData.length;progress.value=0;progress.id="watchProgress"
               watchAllBtn.setAttribute("aria-describedby",progress.id)
               watchAllBtn.after(progress);
 
               let succCount=0, failCount=0, promArray=[];
 
-              for(let i=0;i<movieArray.length;i++){
-                promArray.push(getIMDBID(movieArray[i]).then(imdbID=>{
+              for(let i=0;i<letterboxdData.length;i++){
+                promArray.push(getIMDBID(letterboxdData[i]).then(imdbID=>{
                   console.log("Got IMDb ID:",imdbID);
                   return getMovieState(authKey.value,imdbID)
                 }).then(status=>{
@@ -183,19 +185,18 @@
                   console.log("Caught error during marking as watched:",ex);
                   failCount+=1
                 }).finally(() => {
-                  progress.textContent=`${(failCount+succCount)/movieArray.length*100}%`
+                  progress.textContent=`${(failCount+succCount)/letterboxdData.length*100}%`
                   progress.value = failCount+succCount;
                 }))
               }
               Promise.allSettled(promArray).then((results) =>{
-                watchAllBtn.ariaBusy="false";watchAllBtn.disabled=false;watchAllBtn.textContent=`Done marking as 👁️ (${succCount}/${movieArray.length}) succeeded`;
+                watchAllBtn.ariaBusy="false";watchAllBtn.disabled=false;watchAllBtn.textContent=`Done marking as 👁️ (${succCount}/${letterboxdData.length}) succeeded`;
                 watchAllBtn.setAttribute("aria-describedby","");progress.remove();
               });
             });
             loveAllBtn.addEventListener('click',(e)=>{
               console.log("Marking all as liked");
               loveAllBtn.disabled=true;loveAllBtn.textContent="Processing...";loveAllBtn.ariaBusy="true";
-              let likedArray = movieArray.filter((mov)=>mov.like)
               let progress = document.createElement("progress");progress.max=likedArray.length;progress.value=0;progress.id="loveProgress"
               loveAllBtn.setAttribute("aria-describedby",progress.id)
               loveAllBtn.after(progress);
@@ -253,12 +254,9 @@
             markLikedBtn.addEventListener('click',(e)=>{
               console.log("Marking as liked:",movie.name);
               markLikedBtn.disabled=true;markLikedBtn.textContent="Processing...";
-              return getIMDBID(movie).then(imdbID=>{
+              getIMDBID(movie).then(imdbID=>{
                 console.log("Got IMDb ID:",imdbID);
-                return getMovieState(authKey.value,imdbID)
-              }).then(status=>{
-                return markLiked(authKey.value,status.result)
-                .then((e)=>{markLikedBtn.disabled=false;markLikedBtn.textContent="👍✔️"})
+                return markLiked(authKey.value,imdbID).then((e)=>{markLikedBtn.disabled=false;markLikedBtn.textContent="👍✔️"})
               }).catch((ex)=>{
                 markLikedBtn.disabled=false;markLikedBtn.textContent="👍❌";
                 console.log("Caught error during marking as liked:",ex);
@@ -309,15 +307,28 @@
               like: (e.getElementsByTagName("letterboxd:memberLike")[0]?.textContent == "Yes"),
               watchedDate: e.getElementsByTagName("letterboxd:watchedDate")[0]?.textContent,
               tmdbID: e.getElementsByTagName("tmdb:movieId")[0]?.textContent,
-              name: e.getElementsByTagName("letterboxd:filmTitle")[0]?.textContent
+              name: e.getElementsByTagName("letterboxd:filmTitle")[0]?.textContent,
+              year: e.getElementsByTagName("letterboxd:filmYear")[0]?.textContent
             }
           }).filter(e=>!e.link.includes("/list/"))
 
           reflectFeedOnHTML(parsed);
         }
 
+        function mergeArrays(newInfo){
+          newInfo.forEach((movie)=>{
+            const matchIdx=letterboxdData.findIndex((e)=>(e.link===movie.link||(e.name===movie.name&&e.year===movie.year))) //match on link/URI or name AND year
+            if(matchIdx!==-1){
+              for(const property of Object.keys(movie)){
+                letterboxdData[matchIdx][property]=movie[property] //add/overwrite all properties of the new data if matched
+              }
+            }else{letterboxdData.push(movie)} //if not matched, add as new entry
+          })
+          return letterboxdData.length
+        }
+
         /* FROM watched.csv exported from letterboxd */
-        function parseCSV(csv){
+        function parseCSV(csv, liked=false){
           const lettEntries = csv.split("\n").slice(1); //slice header
 
           let parsed = lettEntries.map((entry)=>{
@@ -334,9 +345,11 @@
             let year = entry.substring(nameIdx+1,yearIdx);
             let URI = entry.substring(yearIdx+1);
             return {
-              watchedDate: date,
+              ...(liked) && {like: true},//if liked, add like property
+              ...(!liked) && {watchedDate: date},//otherwise add the watchdate
               link: URI,
-              name
+              name,
+              year
             }
           })
 
@@ -403,7 +416,43 @@
             "method": "POST",
             "mode": "cors",
             "credentials": "omit"
-          })); //obj.result[0] has _id and state properties
+          })).then((res)=>{
+            if(res.result?.length>0) return res
+            else{
+              return getMovie_ctime(authKey,imdbID).then(ctime=>{
+                return {
+                  result: [
+                    {
+                      _id: imdbID, removed: true, temp: true,
+                      "_ctime": new Date(ctime).toJSON(), "_mtime": new Date().toJSON(),
+                      state: {
+                        lastWatched: new Date().toJSON(),
+                        timeWatched: 0, timeOffset: 0, overallTimeWatched: 0, timesWatched: 0, flaggedWatched: 0,
+                        duration: 0, noNotif: false,
+                        video_id: null, watched: null
+                      },
+                      type: "movie"
+                    }
+                  ]
+                }
+              })
+            }
+          }); //obj.result[0] has _id and state properties
+        }
+
+        function getMovie_ctime(authKey,imdbID){
+          return processFetch(fetch("https://api.strem.io/api/datastoreMeta", {
+            "headers": {
+              "content-type": "text/plain;charset=UTF-8",
+              "Referer": "https://web.stremio.com/"
+            },
+            "body": `{"authKey":"${authKey}","collection":"libraryItem"}`,
+            "method": "POST"
+          })).then(res=>{
+            const match = res.result?.find(e=>e[0]===imdbID) //{result:[["tt...",1759613912320],["tt...",1759612708451]...]}
+            if(match) return match[1]
+            else return new Date().getTime()
+          });
         }
 
         function markWatched(authKey,status){
@@ -439,7 +488,7 @@
             "method": "POST",
           }));
         }
-        function markLoved(authKey,imdbID){
+        function markLiked(authKey,imdbID){
           /* Mark as loved */
           return processFetch(fetch("https://likes.stremio.com/api/send", {
             "headers": {
