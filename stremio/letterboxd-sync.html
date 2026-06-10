@@ -179,7 +179,7 @@
               let succCount=0, failCount=0, promArray=[];
 
               for(let i=0;i<letterboxdData.length;i++){
-                promArray.push(getIMDBID(letterboxdData[i]).then(imdbID=>{
+                promArray.push(getIMDBID(letterboxdData[i],list.children.item(i)).then(imdbID=>{
                   console.log("Got IMDb ID:",imdbID);
                   return getMovieState(authKey.value,imdbID)
                 }).then(status=>{
@@ -243,7 +243,7 @@
               markWatchedBtn.addEventListener('click',(e)=>{
                 console.log("Marking as watched:",movie.name);
                 markWatchedBtn.disabled=true;markWatchedBtn.textContent="Processing...";
-                return getIMDBID(movie).then(imdbID=>{
+                return getIMDBID(movie,item).then(imdbID=>{
                   console.log("Got IMDb ID:",imdbID);
                   return getMovieState(authKey.value,imdbID)
                 }).then(status=>{
@@ -259,7 +259,7 @@
             markLikedBtn.addEventListener('click',(e)=>{
               console.log("Marking as liked:",movie.name);
               markLikedBtn.disabled=true;markLikedBtn.textContent="Processing...";
-              getIMDBID(movie).then(imdbID=>{
+              getIMDBID(movie,item).then(imdbID=>{
                 console.log("Got IMDb ID:",imdbID);
                 return markLiked(authKey.value,imdbID).then((e)=>{markLikedBtn.disabled=false;markLikedBtn.textContent="👍✔️"})
               }).catch((ex)=>{
@@ -267,7 +267,10 @@
                 console.log("Caught error during marking as liked:",ex);
               })
             });
-            let stremioState = document.createElement("span");stremioState.textContent="Stremio: ";
+            let stremioState = document.createElement("span");stremioState.innerHTML='<a href="https://web.stremio.com/" target="_blank"><img src="https://web.stremio.com/favicons/favicon.ico" style="height:1em" alt="Stremio logo"></a>: ';
+            stremioState.addEventListener('click',(e)=>{
+              getIMDBID(movie,item).then(imdbID=>{})
+            })
             buttons.appendChild(stremioState);
             if(movie.like){
               data.innerHTML+=" (🧡)";
@@ -275,7 +278,7 @@
               markLovedBtn.addEventListener('click',(e)=>{
                 console.log("Marking as loved:",movie.name);
                 markLovedBtn.disabled=true;markLovedBtn.textContent="Processing...";
-                getIMDBID(movie).then(imdbID=>{
+                getIMDBID(movie,item).then(imdbID=>{
                   console.log("Got IMDb ID:",imdbID);
                   return markLoved(authKey.value,imdbID).then((e)=>{markLovedBtn.disabled=false;markLovedBtn.textContent="💜✔️"})
                 }).catch((ex)=>{
@@ -400,11 +403,18 @@
           })
         }
 
-        async function getIMDBID(movie){
-          let res = undefined;
-          if(movie.tmdbID && tmdbKey.value!==""){res = await getIMDBIDfromTMDBID(movie.tmdbID, tmdbKey.value)}
-          if(res) return res
-          else return getIMDBIDfromLetterboxdURL(movie.link);
+        async function getIMDBID(movie, elementIMDBStore=undefined){
+          if(elementIMDBStore.dataset["IMDBID"]) return elementIMDBStore.dataset["IMDBID"]
+          else{
+            let res = undefined;
+            if(movie.tmdbID && tmdbKey.value!==""){res = await getIMDBIDfromTMDBID(movie.tmdbID, tmdbKey.value)}
+            if(!res) res = await getIMDBIDfromLetterboxdURL(movie.link);
+            if(elementIMDBStore){
+              elementIMDBStore.dataset["IMDBID"] = res
+              elementIMDBStore.querySelector('a[href*="web.stremio"]').href = `https://web.stremio.com/#/detail/movie/${res}/${res}`
+            }
+            return res
+          }
         }
 
         function getMovieState(authKey,imdbID){
