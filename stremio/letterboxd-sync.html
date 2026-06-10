@@ -119,18 +119,21 @@
         const localRSS=document.getElementById("localRSS");
         localRSS.addEventListener('change',(e)=>{
           xml=undefined;
-          if(e.target.files.length==0){e.setCustomValidity('Please select a file');e.reportValidity();return;}
-          const f=e.target.files[0];
-          if(f){
-            if(!f.name.endsWith('.xml')&&!f.name.endsWith('.csv')){alert("Invalid file extension");return}
-            else{const read=new FileReader();
-              read.onload=(ev)=>{
-                if(f.name.endsWith('.xml')){xml = ev.target.result; parseFeed(xml)}
-                else {parseCSV(ev.target.result)}
-              };
-              read.readAsText(f);
-            }
-          }else{e.setCustomValidity('Error getting file');e.reportValidity();return;}
+          if(e.target.files.length===0){e.setCustomValidity('Please select a file');e.reportValidity();return;}
+          //const f=e.target.files[0];
+          for(const f of e.target.files){
+            if(f){
+              if(!f.name.endsWith('.xml')&&!f.name.endsWith('.csv')){alert("Invalid file extension");return}
+              else{const read=new FileReader();
+                read.onload=(ev)=>{
+                  if(f.name.endsWith('.xml')){xml = ev.target.result; parseFeed(xml)}
+                  else if(f.name==="watched.csv"){parseCSV(ev.target.result)}
+                  else if(f.name==="films.csv"){parseCSV(ev.target.result,true)}
+                };
+                read.readAsText(f);
+              }
+            }else{e.setCustomValidity('Error getting file');e.reportValidity();return;}
+          }
         });
 
         document.querySelectorAll('.dropZone').forEach(dz=>{
@@ -163,9 +166,9 @@
             fieldList.id = "movieListFieldset"
             const legend = document.createElement("legend");legend.textContent = "Movies in feed"
             fieldList.appendChild(legend);fieldList.style.width="100%"
-            let watchAllBtn = document.createElement("button");watchAllBtn.textContent=`Mark all (${letterboxdData.length}) as 👁️`
+            let watchAllBtn = document.createElement("button");watchAllBtn.textContent=`Mark all as 👁️`
             const likedArray = letterboxdData.filter((mov)=>mov.like)
-            let loveAllBtn = document.createElement("button");loveAllBtn.textContent=`Mark all 🧡 (${likedArray.length}) as 💜`
+            let loveAllBtn = document.createElement("button");loveAllBtn.textContent=`Mark all 🧡 as 💜`
             watchAllBtn.addEventListener('click',(e)=>{
               console.log("Marking all as watched");
               watchAllBtn.disabled=true;watchAllBtn.textContent="Processing...";watchAllBtn.ariaBusy="true"
@@ -227,29 +230,31 @@
           }
           list = document.getElementById("movieList");
           list.replaceChildren();//clear previous entries if any
-          movieArray.forEach(movie=>{
+          letterboxdData.forEach(movie=>{
             let item = document.createElement("li");
             let data = document.createElement("span");
             let buttons = document.createElement("span");
             let flex = document.createElement("div");flex.style.display="flex";flex.style.justifyContent="space-between";flex.style.alignItems="center";
             let link = document.createElement("a");link.href=movie.link;link.textContent=movie.name;
             data.appendChild(link);
-            if(movie.watchedDate){data.innerHTML+=` 👁️ ${movie.watchedDate}`;}
-            let markWatchedBtn = document.createElement("button");markWatchedBtn.textContent="Mark 👁️";markWatchedBtn.dataset["btnType"]="watched";
-            markWatchedBtn.addEventListener('click',(e)=>{
-              console.log("Marking as watched:",movie.name);
-              markWatchedBtn.disabled=true;markWatchedBtn.textContent="Processing...";
-              return getIMDBID(movie).then(imdbID=>{
-                console.log("Got IMDb ID:",imdbID);
-                return getMovieState(authKey.value,imdbID)
-              }).then(status=>{
-                return markWatched(authKey.value,status.result)
-                .then((e)=>{markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️✔️"})
-              }).catch((ex)=>{
-                markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️❌";
-                console.log("Caught error during marking as watched:",ex);
-              })
-            });
+            let markWatchedBtn = document.createElement("button");
+            if(movie.watchedDate){data.innerHTML+=` 👁️ ${movie.watchedDate}`;
+              markWatchedBtn.textContent="Mark 👁️";markWatchedBtn.dataset["btnType"]="watched";
+              markWatchedBtn.addEventListener('click',(e)=>{
+                console.log("Marking as watched:",movie.name);
+                markWatchedBtn.disabled=true;markWatchedBtn.textContent="Processing...";
+                return getIMDBID(movie).then(imdbID=>{
+                  console.log("Got IMDb ID:",imdbID);
+                  return getMovieState(authKey.value,imdbID)
+                }).then(status=>{
+                  return markWatched(authKey.value,status.result)
+                  .then((e)=>{markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️✔️"})
+                }).catch((ex)=>{
+                  markWatchedBtn.disabled=false;markWatchedBtn.textContent="👁️❌";
+                  console.log("Caught error during marking as watched:",ex);
+                })
+              });
+            }
             let markLikedBtn = document.createElement("button");markLikedBtn.textContent="Mark 👍";markLikedBtn.dataset["btnType"]="liked";
             markLikedBtn.addEventListener('click',(e)=>{
               console.log("Marking as liked:",movie.name);
@@ -281,7 +286,7 @@
               buttons.appendChild(markLovedBtn);
             }
             buttons.appendChild(markLikedBtn);
-            buttons.appendChild(markWatchedBtn);
+            if(movie.watchedDate) buttons.appendChild(markWatchedBtn);
             buttons.style.display="flex";buttons.style.gap="0.5ch";buttons.style.flexShrink="0";
             Array.from(buttons.children).filter(btn=>btn.tagName==="BUTTON").forEach(btn=>{btn.classList.add("blue-button");btn.style.width="fit-content"});
             flex.appendChild(data);
