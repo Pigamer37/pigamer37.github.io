@@ -53,11 +53,12 @@
     </header>
     <main>
     <style>form{display:flex;flex-direction:column;align-content:center;align-items:center;flex-wrap:wrap;& p,& > span,& > div{width:clamp(60px,100%,40rem);}& button{width:100%}}fieldset{box-sizing:border-box;display:flex;flex-direction:column;width:clamp(60px,100%,40rem);line-height:1.2;& input[type="text"],& input[type="url"],& input[type="email"],& input[type="number"]{width:100%;}& label{margin-block-end:1rem;&.half-w{width:50%;}}}textarea{tab-size:2;resize:vertical;width:100%;} #res-box{margin-block-end:1rem;background-color:rgb(13 18 28);border:1px solid light-dark(white, black);overflow:hidden;border-radius:0 0 1rem 1rem;& label{margin-inline:14px}& label textarea{width:calc(100% - 28px);resize:none;margin-inline:14px;}& #copy,#fileDwld,#share{font-weight:bold;border:.1em solid black;height:max(1rem,32px);background-color:blue;color:white;}}label:has(input,textarea,select){&.recommended:before{content:"+ ";color:blue}}/*#copy:before{content:'';mask-image: url(https://developer.mozilla.org/static/media/clippy.92fffda9d37d9c3a3b37.svg);}*/
-    li.todo{&::marker{content:counter(list-item)". [   ] "}&.done{&::marker{content:counter(list-item)". [✓] ";color:green}}&.wont{&::marker{content:counter(list-item)". [✗] ";color:red}}</style>
+    li.todo{&::marker{content:counter(list-item)". [   ] "}&.done{&::marker{content:counter(list-item)". [✓] ";color:green}}&.wont{&::marker{content:counter(list-item)". [✗] ";color:red}}}
+    #stremioLoginBtn{font-weight:bold;color:unset;text-decoration:none;background-color:rgb(59 38 103);border:1px rgb(87 59 148) solid;display:flex;width:100%;align-items:center;justify-content:center;gap:0.75rem;padding-block:1em;border-radius:0.75rem;& img{height:1.5em}}</style>
     <h1 style="display:flex;justify-content:center;">Sync Letterboxd to Stremio</h1>
      <article class="window" id="main_win">
         <div class="title-bar">
-          <span class="title">Sync Letterboxd to Stremio<noscript style="color:red">JavaScript is off</noscript></span>
+          <span class="title">Sync Letterboxd activity (watched & liked movies) to Stremio<noscript style="color:red">JavaScript is off</noscript></span>
           <div class="buttons">
             <button tabindex="-1">_</button>
             <button tabindex="-1">&#x26F6;</button>
@@ -66,22 +67,38 @@
         </div>
         <div class="content">
         <noscript><p style="color:red;margin-block-end:0.625rem;">JavaScript is off, this won't load or work without it... sorry!</p></noscript>
+        <p>So, you have an extensive Letterboxd library and you want Stremio to know which movies you have already watched and loved. This may be out of convenience, maybe to fine-tune recommendations from addons like Watchly (or now Cinemeta Premium, as we learned recently).</p>
+        <p>This is the tool you need, and you'll only need to provide three key pieces of info (that don't get sent anywhere, they are used locally in your browser):</p>
+          <ol>
+            <li>Your Stremio Login</li>
+            <li>A TMDB API read access token</li>
+            <li>Your Letterboxd activity</li>
+          </ol>
+        <p>Each piece is explained in more detail next to its input.</p>
         <form id="Letterboxd">
           <fieldset id="Stremio"><legend>Stremio account</legend>
-            <p>Login using an authentication key</p><ul><li> Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser. </li><li> Open the developer console and paste the follow code snippet: <code>JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
-            <label>Your Stremio authKey <input id="authKey" type="text" autocomplete="off" placeholder="a84M1lWI9l5Ty7SZmbYy13_yaGAmigHtzZnvM7qbeP0=" minlength="44" maxlength="46" style="width:46ch;field-sizing:content" required></label>
+            <a type="button" id="stremioLoginBtn">
+                <img src="https://stremio.com/website/stremio-logo-small.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="Stremio">
+                <span id="stremioLoginText" class="text-lg">Login with Stremio</span>
+            </a>
+            <hr style="width:inherit"/>
+            <p>Or login by getting an authentication key manually</p><ul><li>Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser.</li><li>Open the developer console and paste the follow code snippet: <code>JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
+            <label>Your Stremio authKey <input id="authKey" class="CascadiaCode" type="text" autocomplete="off" placeholder="2-cSkCwHmCv*********************************" minlength="44" maxlength="46" style="width:44ch;field-sizing:content" required></label>
           </fieldset>
           <fieldset id="TMDB"><legend>TMDB API</legend>
             <p>You will probably need to enter your own TMDB API Read Access Token to transform from Letterboxd to IMDB IDs. You can get one for free at <a href="https://www.themoviedb.org/settings/api" target="_blank">themoviedb.org</a></p>
             <label class="recommended">Your TMDB API key <textarea id="tmdbKey" class="CascadiaCode" type="text" autocomplete="off" placeholder="82ude923791618e1yduw1821d9hw1u***************************************************************************************************************************************************************************************************************" minlength="237" maxlength="237"></textarea></label>
           </fieldset>
           <fieldset name="channel" id="watchData"><legend>Watch data</legend>
-            <label>Link to the .xml file where your feed is available <input id="rssURL" type="url" autocomplete="url" inputmode="url" placeholder="https://letterboxd.com/username/rss/"></label>
-            <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</span>
-            <label>Local RSS file (doesn't get uploaded anywhere) <input type="file" id="localRSS"><div class="dropZone">Or drop file here</div></label>
+            <!-- <label>Link to the .xml file where your Letterboxd RSS feed is available <input id="rssURL" type="url" autocomplete="url" inputmode="url" placeholder="https://letterboxd.com/username/rss/"></label> -->
+            <!-- <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</span> -->
+            <label>Letterboxd recent activity RSS .xml file, "watched.csv" or liked/ "films.csv" from Letterboxd export (can be added sequentially) <input type="file" id="localRSS"><div class="dropZone">Or drop file(s) here</div></label>
           </fieldset>
         </form>
-        <script>const authKey=document.getElementById("authKey");
+        <script>const stremioLoginBtn=document.getElementById("stremioLoginBtn");stremioLoginBtn.href=`https://www.stremio.com/login?appName=${encodeURIComponent("KB's Letterboxd Sync")}&appCallback=${window.location.origin+window.location.pathname}`;
+        const authKey=document.getElementById("authKey");
+        if(window.location.search){authKey.value=new URLSearchParams(window.location.search).get("key");const stremioLoginText=document.getElementById("stremioLoginText");
+          stremioLoginText.textContent=stremioLoginText.textContent.replace("Login","Logged in")+" ✓"}
         authKey.addEventListener('change', (event)=>{
           authKey.value=authKey.value.trim();
           if(authKey.value.startsWith("'"))authKey.value=authKey.value.slice(1);
