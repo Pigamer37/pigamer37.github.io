@@ -78,10 +78,10 @@
           <label class="recommended">Podcast Author(s) <input type="text" name="podAuthor" placeholder="John Doe" maxlength="255"></label>
           <label class="recommended">Link to the podcast (if it has a website or similar) <input type="url" autocomplete="url" inputmode="url" placeholder="https://www.johndoe.org/podcast" name="link" maxlength="255"></label>
           <label class="recommended" id="chaLink" style="margin-block-end:0">Link to the .xml file where this feed will be available <input type="url" autocomplete="url" inputmode="url" placeholder="https://www.johndoe.org/podcast/RSS.xml" name="atomLink" maxlength="255"></label>
-          <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</span>
+          <button type="button" class="blue-button" id="fetchFeed">Copy this feed's contents to the generator</button><span style="margin-block-end:1rem"></span>
           <label>Description <input type="text" name="desc" placeholder="A comedy podcast made by John Doe, about basketball and soccer and video games" required maxlength="1000"></label>
           Image / Show artwork:
-          <label>Image URL <input type="url" autocomplete="url" inputmode="url" title="Publicly available square JPEG or PNG URL between 1400 & 3000px" pattern="\S+[.](?:jpeg|png|JPEG|PNG)\s*$" placeholder="https://www.johndoe.org/img.[jpeg/png]" name="imURL" required maxlength="255">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a> for image validation)</label>
+          <label>Image URL <input type="url" autocomplete="url" inputmode="url" title="Publicly available square JPEG or PNG URL between 1400 & 3000px" pattern="\S+[.](?:jpeg|png|JPEG|PNG)\s*$" placeholder="https://www.johndoe.org/img.[jpeg/png]" name="imURL" required maxlength="255"></label>
           <span id="imWidth" style="margin-block-end:1rem"><label>Image size (must be square, if equal to 3000px you can leave it blank) <input style="width:unset" type="number" min="1400" max="3000" size="4" step="1" name="imWidth" placeholder="In pixels"></label>
           </span>
           <label>Image description <input type="text" name="imDesc" placeholder="A podcast logo/artwork..." maxlength="255"></label>
@@ -169,11 +169,11 @@
           <span id="sep" style="width:100%;display:flex;flex-wrap:wrap;flex:1;justify-content:space-between"><label class="half-w">Season number <input type="number" min="1" step="1" name="season" placeholder="1"></label>
           <label class="half-w">Episode number <input type="number" min="1" step="1" name="episode" placeholder="1"></label></span>
           Episode files:
-          <label id="EpFileURL">Episode file URL <input type="url" autocomplete="url" inputmode="url" name="content" placeholder="https://www.johndoe.org/podcast/episode1.[M4A|MP3|MOV|MP4|M4V|PDF]" required maxlength="255">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a>)</label>
+          <label id="EpFileURL">Episode file URL <input type="url" autocomplete="url" inputmode="url" name="content" placeholder="https://www.johndoe.org/podcast/episode1.[M4A|MP3|MOV|MP4|M4V|PDF]" required maxlength="255"></label>
           <p>If you get an error, or you want to inlcude the duration of the file as metadata, <strong>also</strong> use:</p>
           <label class="recommended">Episode file (doesn't get uploaded anywhere) <input type="file" name="encFile" accept="audio/x-m4a,audio/mpeg,video/quicktime,video/mp4,video/x-m4v,application/pdf"><div class="dropZone">Or drop file here</div></label>
           Image / Episode specific artwork:
-          <label class="recommended">Image URL <input type="url" autocomplete="url" inputmode="url" title="Publicly available square JPEG or PNG URL between 1400 & 3000px" pattern="\S+[.](?:jpeg|png|JPEG|PNG)\s*$" placeholder="https://www.johndoe.org/Episode1Img.[jpeg/png]" name="epImURL" maxlength="255">(goes through <a href="https://test.cors.workers.dev/?" target="_blank">3rd party proxy</a> for image validation)</label>
+          <label class="recommended">Image URL <input type="url" autocomplete="url" inputmode="url" title="Publicly available square JPEG or PNG URL between 1400 & 3000px" pattern="\S+[.](?:jpeg|png|JPEG|PNG)\s*$" placeholder="https://www.johndoe.org/Episode1Img.[jpeg/png]" name="epImURL" maxlength="255"></label>
           <label class="recommended"><input type="checkbox" name="explicEP"> This episode is explicit </label>
           <label>Episode chapters URL <input type="url" autocomplete="url" inputmode="url" name="chapURL" title="URL to a CORS accessible JSON file" pattern="\S+[.](?:json|JSON)\s*$" placeholder="https://www.johndoe.org/podcast/chapters-ep1.json" maxlength="255">
           <span class="info">🛈</span>
@@ -424,7 +424,7 @@
         content.addEventListener("change", ()=>{content.setCustomValidity("");itemEnc="";
             new Promise((resolve, reject)=>{
               if(content.value!==""){const option={method:'HEAD'};
-                const url='https://test.cors.workers.dev/?'+content.value.trim();
+                const url=content.value.trim();
                 let blob=undefined;
                 fetch(url,option).then(res=>{if(!res.ok){
                     content.setCustomValidity(`Can't access file from this site (bad response)`);content.reportValidity();return;
@@ -565,9 +565,9 @@
             else if(!chaLink.checkValidity()){chaLink.reportValidity();return;}
             new Promise((res, rej)=>{
             fetchFeed.disabled=true;fetchFeed.textContent="Processing feed...";
-            console.log(`fetching https://test.cors.workers.dev/?${chaLink.value.trim()}`);
+            console.log(`fetching ${chaLink.value.trim()}`);
             const option={method:'GET',mode:'cors'};
-            fetch(`https://test.cors.workers.dev/?${chaLink.value.trim()}`,option).then(res=>{if(!res.ok){
+            fetch(chaLink.value.trim(),option).then(res=>{if(!res.ok){
               chaLink.setCustomValidity(`Can't access file from this site (bad response)`);chaLink.reportValidity();rej(chaLink.validationMessage);return;
             }else{return res.text()}
             }).catch(e=>{if(e.toString()==="TypeError: Failed to fetch"){
@@ -661,14 +661,14 @@
         });
         async function TreatImage(imgField){
             function delPreview(){if(imgField.parentElement.nextElementSibling?.tagName==='IMG'){imgField.parentElement.nextElementSibling.remove();imgField.parentElement.style.marginBlockEnd="revert";}}
-            const res=await fetch(`https://test.cors.workers.dev/?${imgField.value.trim()}`,{method:'HEAD'}).catch(e=>{if(e.toString()==="TypeError: Failed to fetch"){imgField.setCustomValidity(`Can't access file from this site`);imgField.reportValidity();}
+            const res=await fetch(imgField.value.trim(),{method:'HEAD'}).catch(e=>{if(e.toString()==="TypeError: Failed to fetch"){imgField.setCustomValidity(`Can't access file from this site`);imgField.reportValidity();}
                 else{imgField.setCustomValidity(e);imgField.reportValidity();}delPreview();return ""});
             if(!res.ok){imgField.setCustomValidity(`Can't access file from this site (bad response)`);imgField.reportValidity();delPreview();return "";
             }else{blob={size:res.headers.get('Content-Length'), type:res.headers.get('Content-Type'), lastMod:res.headers.get('Last-Modified')};
                 if(blob.size<=0){blob=undefined;imgField.setCustomValidity(`Invalid file size`);imgField.reportValidity();delPreview();return ""}
                 if(!IsValidType(blob,'image/png,image/jpeg,.jpeg,.png')){imgField.setCustomValidity(`Invalid type "${blob.type}", please provide a JPEG or PNG file`);imgField.reportValidity();blob=undefined;delPreview();return ""}
                 else{
-                  const imRes=await fetch(`https://test.cors.workers.dev/?${imgField.value.trim()}`,{method:'GET'}).catch(e=>{if(e.toString()==="TypeError: Failed to fetch"){imgField.setCustomValidity(`Can't access image for preview from this site`);imgField.reportValidity();}
+                  const imRes=await fetch(imgField.value.trim(),{method:'GET'}).catch(e=>{if(e.toString()==="TypeError: Failed to fetch"){imgField.setCustomValidity(`Can't access image for preview from this site`);imgField.reportValidity();}
                   else{imgField.setCustomValidity(e);imgField.reportValidity();}delPreview();return ""});
                   if(!imRes.ok){imgField.setCustomValidity(`Can't access image preview from this site (bad response)`);imgField.reportValidity();delPreview();return "";
                   }else{
