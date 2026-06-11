@@ -18,10 +18,32 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <!--RFC 2822 - https://timestampgenerator.com/-->
     <lastBuildDate>
-      Wed, 23 Jul 2025 17:10:33 GMT
+      Thu, 11 Jun 2026 13:18:54 GMT
     </lastBuildDate>
     <pubDate>Wed, 23 Jul 2025 17:10:33 GMT</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[Thermal Hotspots Detection]]></title>
+      <link>https://thermal-hotspots-detection.netlify.app/</link>
+      <description><![CDATA[A website describing a Masters group assignment in which we made an application to automatically detect thermal hotspots on solar pannels]]></description>
+      <category>Programming</category>
+      <category>Electronics</category>
+      <category>Robotics</category>
+      <pubDate>Sun, 25 Jan 2026 13:05:59 GMT</pubDate>
+      <guid>https://thermal-hotspots-detection.netlify.app/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Robótica Social]]></title>
+      <link>https://pigamer37.github.io/es-posts/Robotica_Social_IHR.pdf</link>
+      <description><![CDATA[Trabajo de Robótica Social para la asignatura Interacción Humano-Robot del MUAR]]></description>
+      <category>Robotics</category>
+      <enclosure url="https://pigamer37.github.io/es-posts/Robotica_Social_IHR.pdf"
+        length="1184641"
+        type="application/pdf"
+      />
+      <pubDate>Tue, 13 Jan 2026 13:13:13 GMT</pubDate>
+      <guid>https://pigamer37.github.io/es-posts/Robotica_Social_IHR.pdf</guid>
+    </item>
     <item>
       <title><![CDATA[I made a Stremio Addon]]></title>
       <link>https://pigamer37.github.io/posts/I_made_a_Stremio_Addon</link>
@@ -38,6 +60,8 @@
               <figcaption style="display:table-caption;caption-side:bottom">The Buta no Subs Stremio Addon Logo, made by the friend I made the addon for</figcaption></figure>
               <p>A dear friend of mine studies Japanese by himself. A lot of the time, Animelon had subtitles which timing was offset from the video, which made it tedious or impossible to use, so I recommended the platform to him, because it has a subtitle timing offset feature built right in. That's where the problem arose: the base subtitle addons didn't usually return results in Japanese, and the one community addon that claimed it would didn't work either.</p>
               <p>I don't know Japanese at all, but I didn't let that stop me. So, with <a href="https://github.com/Pigamer37/letterboxd-stremio-addon" target="_blank">a failed addon project</a> on my past, I cloned that repo to get a "template" and started researching the protocol (again), japanese subtitle providers, and started making changes. I had a working prototype within 3 days, which was a surprise even for myself! I just had to wait for the Stremio team to help me with a bug on the tool they provide to publish addons. I opened issues, wrote emails, and waited while making improvements on the addon... But I finally was tired of waiting and published it on <a href="https://render.com/" target="_blank">Render</a>. The project has changed a lot since then, adding more subtitle sources and changing the flow of the program so it is faster and more accurate. There's still progress to be made, because this is one of my first experiences using Node.js, Express.js, and doing backend, so the code is not the cleanest, for example. The current list of issues and future enhancements will always be updated on the <a href="https://github.com/Pigamer37/buta-no-subs-stremio-addon" target="_blank">GitHub repository</a>, so feel free to check it out and/or contribute to it there!</p>
+              <ins datetime="2025-07-29">Since this post, I ended up making two more addons, <a href="https://github.com/Pigamer37/animeflv-stremio-addon" target="_blank">one adding AnimeFLV functionallity</a>, and <a href="https://github.com/Pigamer37/rtve-stremio-addon" target="_blank">other adding spanish live TV and radio (RTVE)</a>. Also, <a href="https://github.com/Serkali-sudo/strelingo-addon" target="_blank">the Strelingo addon</a>, which lets users see two subtitle languages simultaneously (by merging two different languages' subtitle tracks) for language learning, added <i lang="ja">Buta no subs</i> as a japanese subtitle provider! I also made an <a href="https://pigamer37.github.io/stremio/manifest.json" target="_blank">addon catalog</a>, which will host all addons I make/contribute to.</ins>
+          <ins datetime="2026-06-11">I made a <a href="https://pigamer37.github.io/stremio/letterboxd-sync">tool to export/sync your Letterboxd watch and like data to Stremio</a>. See more details and an explanation there.</ins>
       ]]> </content:encoded>
       <category>Programming</category>
       <pubDate>Wed, 23 Jul 2025 17:10:33 GMT</pubDate>
