@@ -78,12 +78,12 @@
         <form id="Letterboxd">
           <fieldset id="Stremio"><legend>Stremio account</legend>
             <a class="y2k" type="button" id="stremioLoginBtn">
-                <img src="https://stremio.com/website/stremio-logo-small.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="Stremio">
-                <span id="stremioLoginText" class="text-lg">Login with Stremio</span>
+                <img src="https://stremio.com/website/stremio-logo-small.png" alt="Stremio">
+                <span id="stremioLoginText">Login with Stremio</span>
             </a>
             <hr style="width:inherit"/>
-            <p>Or login by getting an authentication key manually</p><ul><li>Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser.</li><li>Open the developer console and paste the follow code snippet: <code>JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
-            <label>Your Stremio authKey <input id="authKey" class="CascadiaCode" type="text" autocomplete="off" placeholder="2-cSkCwHmCv*********************************" minlength="44" maxlength="46" style="width:44ch;field-sizing:content" required></label>
+            <p>Or login by getting an authentication key manually</p><ul><li>Login to <a href="https://web.stremio.com/" target="_blank">https://web.stremio.com/</a> using your Stremio credentials in your browser.</li><li>Open the developer console and paste the follow code snippet: <code style="word-break:break-word">JSON.parse(localStorage.getItem("profile")).auth.key</code></li><li>Take the output value and paste it into the form below.</li></ul>
+            <label>Your Stremio authKey <input id="authKey" class="CascadiaCode" type="text" autocomplete="off" placeholder="2-cSkCwHmCv*********************************" minlength="44" maxlength="46" style="max-width:44ch" required></label>
           </fieldset>
           <fieldset id="TMDB"><legend>TMDB API</legend>
             <p>You will probably need to enter your own TMDB API Read Access Token to transform from Letterboxd to IMDB IDs. You can get one for free at <a href="https://www.themoviedb.org/settings/api" target="_blank">themoviedb.org</a></p>
