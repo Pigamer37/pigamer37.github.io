@@ -78,7 +78,7 @@ progress{
   accent-color:var(--accent-orange);
   &[value]{
   appearance:none;
-  &::after{content:attr(value)'%';color:light-dark(black,#dedede);}
+  &::after{content:attr(value);color:light-dark(black,#dedede);}
   border-radius:1em;
   background-color:light-dark(whiteSmoke, black);
   box-shadow:0 2px 3px light-dark(rgba(0,0,0,.5), rgba(255,255,255,.5)) inset;
