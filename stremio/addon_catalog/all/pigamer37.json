@@ -5,10 +5,11 @@
       "transportName": "http",
       "manifest": {
         "id": "com.buta.no.subs.stremio.addon",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "name": "Buta No Subs Stremio Addon",
         "logo": "https://i.imgur.com/VZK8qw2.png",
-        "description": "Node.js addon to add japanese subtitles to Stremio. GitHub repo: https://github.com/Pigamer37/buta-no-subs-stremio-addon",
+        "background": "https://static.vecteezy.com/system/resources/previews/033/862/974/large_2x/abstract-orange-smoke-on-a-black-background-design-element-for-brochure-or-flyer-orange-smoke-isolated-on-black-background-ai-generated-free-photo.jpg",
+        "description": "Add japanese subtitles to Stremio via Jimaku and Kitsunekko. GitHub repo: https://github.com/Pigamer37/buta-no-subs-stremio-addon",
         "catalogs": [],
         "resources": [
           "subtitles"
@@ -35,11 +36,11 @@
       "transportName": "http",
       "manifest": {
         "id": "com.animeflv.stremio.addon",
-        "version": "1.1.0",
-        "name": "AnimeFLV, AnimeAV1 & Henaojara",
+        "version": "1.2.0",
+        "name": "AnimeFLV, AnimeAV1, Henaojara & TioAnime",
         "logo": "https://play-lh.googleusercontent.com/ZIjIwO5FJe9R1rplSd4uz54OwBxQhwDcznjljSPl2MgHaCoyF3qG6R4kRMCB40f4l2A=w256",
         "background": "https://images6.alphacoders.com/113/1135890.jpg",
-        "description": "Add AnimeFLV, AnimeAV1 & Henaojara functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV, AnimeAV1 or Henaojara. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
+        "description": "Add AnimeFLV, AnimeAV1, Henaojara & TioAnime functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV, AnimeAV1, Henaojara or TioAnime. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
         "catalogs": [
           {
             "id": "animeflv",
@@ -230,6 +231,68 @@
                   "shoujo",
                   "shounen",
                   "shounen-ai",
+                  "sobrenatural",
+                  "superpoderes",
+                  "suspenso",
+                  "terror",
+                  "vampiros",
+                  "yaoi",
+                  "yuri"
+                ],
+                "optionsLimit": 1,
+                "isRequired": false
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
+            "id": "tioanime",
+            "type": "TioAnime",
+            "name": "search results",
+            "extra": [
+              {
+                "name": "search",
+                "isRequired": true
+              },
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "artes-marciales",
+                  "aventura",
+                  "carreras",
+                  "ciencia-ficcion",
+                  "comedia",
+                  "demencia",
+                  "demonios",
+                  "deportes",
+                  "drama",
+                  "ecchi",
+                  "escolares",
+                  "espacial",
+                  "fantasia",
+                  "harem",
+                  "historico",
+                  "infantil",
+                  "josei",
+                  "juegos",
+                  "magia",
+                  "mecha",
+                  "militar",
+                  "misterio",
+                  "musica",
+                  "parodia",
+                  "policia",
+                  "psicologico",
+                  "recuentos-de-la-vida",
+                  "romance",
+                  "samurai",
+                  "seinen",
+                  "shoujo",
+                  "shounen",
                   "sobrenatural",
                   "superpoderes",
                   "suspenso",
@@ -442,19 +505,62 @@
             ]
           },
           {
-            "id": "animeflv|onair",
-            "type": "AnimeFLV",
-            "name": "On Air"
-          },
-          {
-            "id": "animeav1|onair",
-            "type": "AnimeAV1",
-            "name": "On Air"
-          },
-          {
-            "id": "henaojara|onair",
-            "type": "Henaojara",
-            "name": "On Air"
+            "id": "tioanime|genres",
+            "type": "TioAnime",
+            "name": "TioAnime",
+            "extra": [
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "artes-marciales",
+                  "aventura",
+                  "carreras",
+                  "ciencia-ficcion",
+                  "comedia",
+                  "demencia",
+                  "demonios",
+                  "deportes",
+                  "drama",
+                  "ecchi",
+                  "escolares",
+                  "espacial",
+                  "fantasia",
+                  "harem",
+                  "historico",
+                  "infantil",
+                  "josei",
+                  "juegos",
+                  "magia",
+                  "mecha",
+                  "militar",
+                  "misterio",
+                  "musica",
+                  "parodia",
+                  "policia",
+                  "psicologico",
+                  "recuentos-de-la-vida",
+                  "romance",
+                  "samurai",
+                  "seinen",
+                  "shoujo",
+                  "shounen",
+                  "sobrenatural",
+                  "superpoderes",
+                  "suspenso",
+                  "terror",
+                  "vampiros",
+                  "yaoi",
+                  "yuri"
+                ],
+                "optionsLimit": 1,
+                "isRequired": true
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
           },
           {
             "type": "series",
@@ -491,6 +597,7 @@
           "animeflv:",
           "animeav1:",
           "henaojara:",
+          "tioanime:",
           "tmdb:",
           "anilist:",
           "kitsu:",
@@ -502,6 +609,7 @@
           "signature": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..0XN39hJS4zjNV5ES2brUeQ.sjRgcAHGPIUA0GXXbZI2BZLuKUOiT3jfI8ALp-QlUcWNuW_9qcVjARUxKCE6ncTE1rdK9yCma3IlgdCbI8-3ZV1E5WsKdS3LncHDeqlXThTZ9V7Znc1rATu7kJE_NDxE.Y8gIKpiHqAVypGGOvEXVqw"
         },
         "behaviorHints": {
+          "configurable": true,
           "newEpisodeNotifications": true
         }
       }
@@ -570,6 +678,35 @@
         ],
         "idPrefixes": [
           "tt"
+        ]
+      }
+    },
+    {
+      "transportUrl": "https://pigamer37.github.io/stremio/killer-bean/manifest.json",
+      "transportName": "http",
+      "manifest": {
+        "id": "com.killer-bean.addon",
+        "version": "1.0.0",
+        "name": "Killer Bean",
+        "logo": "https://play-lh.googleusercontent.com/dmOtSQwehGrmZAfs6ZcbDctBL-iQtw68_Lh72eVJX2sues8qWKc6gXCjzYp-iocHRJQDtcIxVNnkeVjtYIBCnI8",
+        "description": "A catalog of all entries in the Killer Bean media franchise by Jeff Lew.",
+        "catalogs": [
+          {
+            "id": "killer-bean",
+            "type": "Killer Bean",
+            "name": "Killer Bean"
+          }
+        ],
+        "resources": [
+          "catalog",
+          "meta"
+        ],
+        "types": [
+          "movie",
+          "series"
+        ],
+        "idPrefixes": [
+          "kb."
         ]
       }
     },

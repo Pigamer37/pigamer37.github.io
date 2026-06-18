@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "id": "kb-forever",
+    "type": "movie",
+    "name": "Killer Bean Forever",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTAzYTZlNTAtOWNkYi00NTY5LWFkZTAtZjhiM2JhMWFlODZkXkEyXkFqcGc@._V1_.jpg",
+    "background": "https://i.ytimg.com/vi/qyYHWkVWQ4o/hqdefault.jpg",
+    "logo": "https://images.metahub.space/logo/medium/tt1340108/img",
+    "runtime": "1h 25m",
+    "description": "Killer Bean is sent on a mission in Beantown, but when he attacks one of the warehouses owned by the mafia boss, Cappuccino, he gets the attention of Detective Cromwell, a bean who's trying to put Cappuccino, and possibly Killer Bean, behind bars.",
+    "releaseInfo": "2008",
+    "country": "United States",
+    "language": "en-US",
+    "trailers": [
+      {
+        "ytId": "Og7-2JjjZ1U",
+        "name": "Killer Bean Forever - Trailer 1 - HD"
+      }
+    ],
+    "links": [
+      {
+        "category": "Open in Stremio",
+        "name": "IMDB metadata",
+        "url": "stremio:///detail/movie/tt1340108"
+      },
+      {
+        "category": "Open in",
+        "name": "IMDB",
+        "url": "https://www.imdb.com/title/tt1340108"
+      },
+      {
+        "category": "Sequel",
+        "name": "Killer Bean",
+        "url": "stremio:///detail/series/kb-series"
+      },
+      {
+        "category": "Genres",
+        "name": "Action",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Action"
+      },
+      {
+        "category": "Genres",
+        "name": "Animation",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Animation"
+      },
+      {
+        "category": "Creator",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      },
+      {
+        "category": "Director",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      }
+    ],
+    "behaviorHints": {
+      "defaultVideoId": "kb-forever"
+    },
+    "videos": [
+      {
+        "id": "kb-forever",
+        "title": "Killer Bean Forever 4K - Official FULL MOVIE",
+        "thumbnail": "https://i.ytimg.com/vi/qyYHWkVWQ4o/hqdefault.jpg",
+        "released": "2018-05-19T22:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "qyYHWkVWQ4o",
+            "name": "4k",
+            "description": "Killer Bean Forever 4K - Official FULL MOVIE"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "com.killer-bean.addon",
+  "version": "1.0.0",
+  "name": "Killer Bean",
+  "logo": "https://play-lh.googleusercontent.com/dmOtSQwehGrmZAfs6ZcbDctBL-iQtw68_Lh72eVJX2sues8qWKc6gXCjzYp-iocHRJQDtcIxVNnkeVjtYIBCnI8",
+  "description": "A catalog of all entries in the Killer Bean media franchise by Jeff Lew.",
+  "catalogs": [
+    {
+      "id": "killer-bean",
+      "type": "Killer Bean",
+      "name": "Killer Bean"
+    }
+  ],
+  "resources": [
+    "catalog",
+    "meta"
+  ],
+  "types": [
+    "movie",
+    "series"
+  ],
+  "idPrefixes": [
+    "kb-"
+  ]
+}

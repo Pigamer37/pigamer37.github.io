@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "kb-1",
+    "type": "movie",
+    "name": "The Killer Bean",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYmFjYmFlMTctYmU5NC00MjVhLTliZjktNjVmNWQ2MjQ4YTc1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "background": "https://i.ytimg.com/vi/2r7DYlDsuas/hqdefault.jpg",
+    "logo": "https://images.metahub.space/logo/medium/tt4707996/img",
+    "runtime": "2m",
+    "description": "Killer bean has been imprisoned. After the blue beans have asked many questions with some punching he introduces himself as being The Killer Bean. The interrogator gets scared when he discovers who he has been punching and attempts to run away, but a guard bean shoots him. The beans continue the interrogation with another bigger, stronger bean as the interrogator. After a few more kicks and questions Killer bean manages to take guns from his two guards' hands and kills every bean in the room.",
+    "releaseInfo": "1996",
+    "country": "United States",
+    "language": "en-US",
+    "links": [
+      {
+        "category": "Open in Stremio",
+        "name": "IMDB metadata",
+        "url": "stremio:///detail/movie/tt4707996"
+      },
+      {
+        "category": "Open in",
+        "name": "IMDB",
+        "url": "https://www.imdb.com/title/tt4707996"
+      },
+      {
+        "category": "Sequel",
+        "name": "The Killer Bean 2: The Party",
+        "url": "stremio:///detail/movie/kb-2-the-party"
+      },
+      {
+        "category": "Genres",
+        "name": "Action",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Action"
+      },
+      {
+        "category": "Genres",
+        "name": "Animation",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Animation"
+      },
+      {
+        "category": "Creator",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      },
+      {
+        "category": "Director",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      }
+    ],
+    "behaviorHints": {
+      "defaultVideoId": "kb-1"
+    },
+    "videos": [
+      {
+        "id": "kb-1",
+        "title": "Original Killer Bean - Remastered",
+        "thumbnail": "https://i.ytimg.com/vi/2r7DYlDsuas/hqdefault.jpg",
+        "released": "2020-09-23T22:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "2r7DYlDsuas",
+            "name": "Remastered",
+            "description": "Original Killer Bean - Remastered"
+          }
+        ]
+      }
+    ]
+  }
+}

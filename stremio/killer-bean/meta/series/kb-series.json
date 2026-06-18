@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "id": "kb-series",
+    "type": "series",
+    "name": "Killer Bean",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjY2OWEwMjgtNzkyYi00Nzg1LTg2MGUtNzY3YWViMzdlZTYyXkEyXkFqcGc@._V1_FMjpg_UY337_.jpg",
+    "background": "https://i.ytimg.com/vi/qyYHWkVWQ4o/hqdefault.jpg",
+    "logo": "https://images.metahub.space/logo/medium/tt13041104/img",
+    "runtime": "38m (main story)",
+    "description": "Taking place directly after the events of Killer Bean Forever, Killer Bean sets off on his quest to destroy the shadow agency.",
+    "releaseInfo": "2020",
+    "country": "United States",
+    "language": "en-US",
+    "links": [
+      {
+        "category": "Open in Stremio",
+        "name": "IMDB metadata",
+        "url": "stremio:///detail/movie/tt13041104"
+      },
+      {
+        "category": "Open in",
+        "name": "IMDB",
+        "url": "https://www.imdb.com/title/tt13041104"
+      },
+      {
+        "category": "Prequel",
+        "name": "Killer Bean Forever",
+        "url": "stremio:///detail/movie/kb-forever"
+      },
+      {
+        "category": "Genres",
+        "name": "Action",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Action"
+      },
+      {
+        "category": "Genres",
+        "name": "Animation",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Animation"
+      },
+      {
+        "category": "Creator",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      },
+      {
+        "category": "Director",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      }
+    ],
+    "videos": [
+      {
+        "id": "kb-series-jet-bean",
+        "title": "Killer Bean vs Jet Bean - Extended Ultra Edition",
+        "episode": 0,
+        "season": 0,
+        "overview": "Killer Bean vs Jet Bean fight scene remastered, with a mysterious new Shadow Bean!",
+        "thumbnail": "https://i.ytimg.com/vi/r8dnsUD-fKI/hqdefault.jpg",
+        "released": "2021-03-25T23:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "r8dnsUD-fKI",
+            "name": "Remastered",
+            "description": "Killer Bean vs Jet Bean - Extended Ultra Edition"
+          }
+        ]
+      },
+      {
+        "id": "kb-series-driving-school",
+        "title": "Killer Bean tries Shadow Bean Driving School",
+        "episode": 1,
+        "season": 0,
+        "overview": "Before Killer Bean Forever, Killer Bean was recruited by the Shadow Agency to become the next elite Shadow Bean. This is the story of his training.",
+        "thumbnail": "https://i.ytimg.com/vi/xp9gobDY50o/hqdefault.jpg",
+        "released": "2022-09-29T22:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "xp9gobDY50o",
+            "name": "HD",
+            "description": "Killer Bean tries Shadow Bean Driving School"
+          }
+        ]
+      },
+      {
+        "id": "kb-series-bad-part",
+        "title": "When Killer Bean goes to the Bad Part of Town",
+        "episode": 2,
+        "season": 0,
+        "overview": "Killer Bean goes to the bad part of town to battle a small army of Bad Beans.",
+        "thumbnail": "https://i.ytimg.com/vi/9YGc_DTvrQQ/hqdefault.jpg",
+        "released": "2022-11-27T23:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "9YGc_DTvrQQ",
+            "name": "HD",
+            "description": "When Killer Bean goes to the Bad Part of Town"
+          }
+        ]
+      },
+      {
+        "id": "kb-series-0",
+        "title": "The Return of Killer Bean",
+        "episode": 0,
+        "season": 1,
+        "overview": "Killer Bean's car is stolen by a bunch of Bad Beans. Now, he must get it back.",
+        "thumbnail": "https://i.ytimg.com/vi/9pN_x3qk56c/hqdefault.jpg",
+        "released": "2020-05-10T22:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "9pN_x3qk56c",
+            "name": "4k",
+            "description": "The Return of Killer Bean  [4K]"
+          }
+        ]
+      },
+      {
+        "id": "kb-series-1",
+        "title": "Episode #1.1",
+        "episode": 1,
+        "season": 1,
+        "overview": "Takes place one day after the events of Killer Bean Forever (2009). Killer Bean tracks down a hacker named Kessler in order to find The Shadow Agency's base. But it turns out to be way more complicated than he thought.",
+        "thumbnail": "https://i.ytimg.com/vi/BltgkVqmQS8/hqdefault.jpg",
+        "released": "2020-09-05T22:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "BltgkVqmQS8",
+            "name": "Killer Bean - Episode 1",
+            "description": "Killer Bean - Episode 1"
+          }
+        ]
+      },
+      {
+        "id": "kb-series-2",
+        "title": "Episode #1.2",
+        "episode": 2,
+        "season": 1,
+        "overview": "Now that Killer Bean has located Reximus's base, him and Max must try to take the mastermind down.",
+        "thumbnail": "https://i.ytimg.com/vi/-873VvTQK-A/hqdefault.jpg",
+        "released": "2020-11-19T23:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "-873VvTQK-A",
+            "name": "Killer Bean - Episode 2",
+            "description": "Killer Bean - Episode 2"
+          }
+        ]
+      }
+    ]
+  }
+}

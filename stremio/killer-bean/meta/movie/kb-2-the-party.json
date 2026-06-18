@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "id": "kb-2-the-party",
+    "type": "movie",
+    "name": "The Killer Bean 2: The Party",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGQ4NGE0OGUtYWZjOS00NWRhLWFjNzEtNzE0ZjExMzBjYzZlXkEyXkFqcGc@._V1_FMjpg_UY576_.jpg",
+    "background": "https://i.ytimg.com/vi/6c1vWnF9bS4/hqdefault.jpg",
+    "logo": "https://images.metahub.space/logo/medium/tt0307057/img",
+    "runtime": "7m",
+    "description": "During a loud party, a bean called Killer Bean breaks in, and begins to attack all the beans in the building.",
+    "releaseInfo": "2000",
+    "country": "United States",
+    "language": "en-US",
+    "links": [
+      {
+        "category": "Open in Stremio",
+        "name": "IMDB metadata",
+        "url": "stremio:///detail/movie/tt0307057"
+      },
+      {
+        "category": "Open in",
+        "name": "IMDB",
+        "url": "https://www.imdb.com/title/tt0307057"
+      },
+      {
+        "category": "Prequel",
+        "name": "The Killer Bean",
+        "url": "stremio:///detail/movie/kb-1"
+      },
+      {
+        "category": "Sequel",
+        "name": "Killer Bean Forever",
+        "url": "stremio:///detail/movie/kb-forever"
+      },
+      {
+        "category": "Genres",
+        "name": "Action",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Action"
+      },
+      {
+        "category": "Genres",
+        "name": "Animation",
+        "url": "stremio:///discover/https://v3-cinemeta.strem.io/series/top?genre=Animation"
+      },
+      {
+        "category": "Creator",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      },
+      {
+        "category": "Director",
+        "name": "Jeff Lew",
+        "url": "stremio:///search?search=Jeff%20Lew"
+      }
+    ],
+    "behaviorHints": {
+      "defaultVideoId": "kb-2-the-party"
+    },
+    "videos": [
+      {
+        "id": "kb-2-the-party",
+        "title": "Killer Bean 2.1 - The Party (HD)",
+        "thumbnail": "https://i.ytimg.com/vi/6c1vWnF9bS4/hqdefault.jpg",
+        "released": "2009-03-24T23:00:00.000Z",
+        "streams": [
+          {
+            "ytId": "6c1vWnF9bS4",
+            "name": "HD",
+            "description": "Killer Bean 2.1 - The Party (HD)"
+          }
+        ]
+      }
+    ]
+  }
+}
