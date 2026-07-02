@@ -36,11 +36,11 @@
       "transportName": "http",
       "manifest": {
         "id": "com.animeflv.stremio.addon",
-        "version": "1.2.0",
-        "name": "AnimeFLV, AnimeAV1, Henaojara & TioAnime",
+        "version": "1.4.0",
+        "name": "JKTioAnimeFLVAV1Jara",
         "logo": "https://play-lh.googleusercontent.com/ZIjIwO5FJe9R1rplSd4uz54OwBxQhwDcznjljSPl2MgHaCoyF3qG6R4kRMCB40f4l2A=w256",
         "background": "https://images6.alphacoders.com/113/1135890.jpg",
-        "description": "Add AnimeFLV, AnimeAV1, Henaojara & TioAnime functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV, AnimeAV1, Henaojara or TioAnime. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
+        "description": "Add AnimeFLV, AnimeAV1, Henaojara, TioAnime, AnimeJara & JKAnime functionallity to Stremio, including catalogs, streams and metadata, even showing upcoming episodes in the calendar! Not affiliated with AnimeFLV, AnimeAV1, Henaojara, TioAnime, AnimeJara or JKAnime. GitHub repo: https://github.com/Pigamer37/animeflv-stremio-addon",
         "catalogs": [
           {
             "id": "animeflv",
@@ -311,6 +311,141 @@
             ]
           },
           {
+            "id": "animejara",
+            "type": "AnimeJara",
+            "name": "search results",
+            "extra": [
+              {
+                "name": "search",
+                "isRequired": true
+              },
+              {
+                "name": "genre",
+                "options": [
+                  "Accion",
+                  "Amor",
+                  "Artes marciales",
+                  "Aventura",
+                  "Carreras",
+                  "Ciencia ficcion",
+                  "Comedia",
+                  "Crimen",
+                  "Demonios",
+                  "Deportes",
+                  "Drama",
+                  "Ecchi",
+                  "Escolar",
+                  "Espacial",
+                  "Espadachin",
+                  "Familia",
+                  "Fantasia",
+                  "Gore",
+                  "Harem",
+                  "Historico",
+                  "Isekai",
+                  "Josei",
+                  "Juegos",
+                  "Magia",
+                  "Mecha",
+                  "Militar",
+                  "Misterio",
+                  "Musica",
+                  "Parodia",
+                  "Psicologico",
+                  "Recuerdos",
+                  "Robots",
+                  "Romance",
+                  "Samurai",
+                  "Seinen",
+                  "Shoujo",
+                  "Shounen",
+                  "Sobrenatural",
+                  "Studio ghibli",
+                  "Superpoderes",
+                  "Suspenso",
+                  "Terror",
+                  "Vampiros",
+                  "Yaoi",
+                  "Yuri",
+                  "Zombies"
+                ],
+                "optionsLimit": 1,
+                "isRequired": false
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
+            "id": "jkanime",
+            "type": "JKAnime",
+            "name": "search results",
+            "extra": [
+              {
+                "name": "search",
+                "isRequired": true
+              },
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "aventura",
+                  "autos",
+                  "comedia",
+                  "dementia",
+                  "demonios",
+                  "misterio",
+                  "drama",
+                  "ecchi",
+                  "fantasia",
+                  "juegos",
+                  "hentai",
+                  "historico",
+                  "terror",
+                  "nios",
+                  "magia",
+                  "artes-marciales",
+                  "mecha",
+                  "musica",
+                  "parodia",
+                  "samurai",
+                  "romance",
+                  "colegial",
+                  "sci-fi",
+                  "shoujo",
+                  "shoujo-ai",
+                  "shounen",
+                  "shounen-ai",
+                  "space",
+                  "deportes",
+                  "super-poderes",
+                  "vampiros",
+                  "yaoi",
+                  "yuri",
+                  "harem",
+                  "cosas-de-la-vida",
+                  "sobrenatural",
+                  "militar",
+                  "policial",
+                  "psicologico",
+                  "thriller",
+                  "seinen",
+                  "josei",
+                  "latino",
+                  "isekai"
+                ],
+                "optionsLimit": 1,
+                "isRequired": false
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
             "id": "animeflv|genres",
             "type": "AnimeFLV",
             "name": "AnimeFLV",
@@ -563,6 +698,133 @@
             ]
           },
           {
+            "id": "animejara|genres",
+            "type": "AnimeJara",
+            "name": "AnimeJara",
+            "extra": [
+              {
+                "name": "genre",
+                "options": [
+                  "Accion",
+                  "Amor",
+                  "Artes marciales",
+                  "Aventura",
+                  "Carreras",
+                  "Ciencia ficcion",
+                  "Comedia",
+                  "Crimen",
+                  "Demonios",
+                  "Deportes",
+                  "Drama",
+                  "Ecchi",
+                  "Escolar",
+                  "Espacial",
+                  "Espadachin",
+                  "Familia",
+                  "Fantasia",
+                  "Gore",
+                  "Harem",
+                  "Historico",
+                  "Isekai",
+                  "Josei",
+                  "Juegos",
+                  "Magia",
+                  "Mecha",
+                  "Militar",
+                  "Misterio",
+                  "Musica",
+                  "Parodia",
+                  "Psicologico",
+                  "Recuerdos",
+                  "Robots",
+                  "Romance",
+                  "Samurai",
+                  "Seinen",
+                  "Shoujo",
+                  "Shounen",
+                  "Sobrenatural",
+                  "Studio ghibli",
+                  "Superpoderes",
+                  "Suspenso",
+                  "Terror",
+                  "Vampiros",
+                  "Yaoi",
+                  "Yuri",
+                  "Zombies"
+                ],
+                "optionsLimit": 1,
+                "isRequired": true
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
+            "id": "jkanime|genres",
+            "type": "JKAnime",
+            "name": "JKAnime",
+            "extra": [
+              {
+                "name": "genre",
+                "options": [
+                  "accion",
+                  "aventura",
+                  "autos",
+                  "comedia",
+                  "dementia",
+                  "demonios",
+                  "misterio",
+                  "drama",
+                  "ecchi",
+                  "fantasia",
+                  "juegos",
+                  "hentai",
+                  "historico",
+                  "terror",
+                  "nios",
+                  "magia",
+                  "artes-marciales",
+                  "mecha",
+                  "musica",
+                  "parodia",
+                  "samurai",
+                  "romance",
+                  "colegial",
+                  "sci-fi",
+                  "shoujo",
+                  "shoujo-ai",
+                  "shounen",
+                  "shounen-ai",
+                  "space",
+                  "deportes",
+                  "super-poderes",
+                  "vampiros",
+                  "yaoi",
+                  "yuri",
+                  "harem",
+                  "cosas-de-la-vida",
+                  "sobrenatural",
+                  "militar",
+                  "policial",
+                  "psicologico",
+                  "thriller",
+                  "seinen",
+                  "josei",
+                  "latino",
+                  "isekai"
+                ],
+                "optionsLimit": 1,
+                "isRequired": true
+              },
+              {
+                "name": "skip",
+                "isRequired": false
+              }
+            ]
+          },
+          {
             "type": "series",
             "id": "calendar-videos",
             "extra": [
@@ -598,6 +860,8 @@
           "animeav1:",
           "henaojara:",
           "tioanime:",
+          "animejara:",
+          "jkanime:",
           "tmdb:",
           "anilist:",
           "kitsu:",
@@ -706,27 +970,34 @@
           "series"
         ],
         "idPrefixes": [
-          "kb."
+          "kb-"
         ]
       }
     },
     {
-      "transportUrl": "https://strelingo-addon.vercel.app/manifest.json",
+      "transportUrl": "https://strelingo.pronouncetube.com/manifest.json",
       "transportName": "http",
       "manifest": {
         "id": "com.serhat.strelingo",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "name": "Strelingo - Dual Language Subtitles",
-        "description": "Provides dual subtitles (main + translation) from OpenSubtitles for language learning. \u003Cbr\u003E\u003Ca href=\"https://github.com/Serkali-sudo/strelingo-addon\" style=\"color: #1E90FF;\"\u003EGitHub\u003C/a\u003E",
+        "description": "Provides dual subtitles (main + translation) from OpenSubtitles for language learning.",
+        "githubUrl": "https://github.com/Serkali-sudo/strelingo-addon",
         "resources": [
           "subtitles"
+        ],
+        "subtitleExtra": [
+          "videoHash",
+          "videoSize",
+          "filename"
         ],
         "types": [
           "movie",
           "series"
         ],
         "idPrefixes": [
-          "tt"
+          "tt",
+          "kitsu"
         ],
         "logo": "https://raw.githubusercontent.com/Serkali-sudo/strelingo-addon/refs/heads/main/assets/strelingo_icon.jpg",
         "background": "https://raw.githubusercontent.com/Serkali-sudo/strelingo-addon/refs/heads/main/assets/strelingo_back.jpg",
@@ -783,6 +1054,7 @@
               "Hebrew [heb]",
               "Hindi [hin]",
               "Croatian [hrv]",
+              "Haitian Creole [hat]",
               "Hungarian [hun]",
               "Igbo [ibo]",
               "Icelandic [ice]",
@@ -850,7 +1122,6 @@
               "Welsh [wel]",
               "Sorbian languages [wen]",
               "Chinese (Cantonese) [zhc]",
-              "Chinese bilingual [zhe]",
               "Chinese (traditional) [zht]"
             ],
             "required": true,
@@ -899,6 +1170,7 @@
               "Hebrew [heb]",
               "Hindi [hin]",
               "Croatian [hrv]",
+              "Haitian Creole [hat]",
               "Hungarian [hun]",
               "Igbo [ibo]",
               "Icelandic [ice]",
@@ -966,11 +1238,10 @@
               "Welsh [wel]",
               "Sorbian languages [wen]",
               "Chinese (Cantonese) [zhc]",
-              "Chinese bilingual [zhe]",
               "Chinese (traditional) [zht]"
             ],
             "required": true,
-            "default": "Turkish [tur]"
+            "default": "English [eng]"
           }
         ]
       }
