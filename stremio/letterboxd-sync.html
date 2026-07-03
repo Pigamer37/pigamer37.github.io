@@ -304,7 +304,8 @@
                   console.log("Caught error during marking as liked:",ex);
                 })
               });
-              let stremioState = document.createElement("span");stremioState.innerHTML='<a href="https://web.stremio.com/" target="_blank"><img src="https://web.stremio.com/favicons/favicon.ico" style="height:1em" alt="Stremio logo"></a>: ';
+              const stremioURL = `https://web.stremio.com/${(movie.imdbID)?`#/detail/movie/${movie.imdbID}/${movie.imdbID}`:""}`;
+              let stremioState = document.createElement("span");stremioState.innerHTML=`<a href="${stremioURL}" target="_blank"><img src="https://web.stremio.com/favicons/favicon.ico" style="height:1em" alt="Stremio logo"></a>: `;
               stremioState.addEventListener('click',(e)=>{
                 getIMDBID(movie,item).then(imdbID=>{})
               })
@@ -534,6 +535,13 @@
 
         async function getIMDBID(movie, elementIMDBStore=undefined){
           if(elementIMDBStore?.dataset["IMDBID"]) return elementIMDBStore.dataset["IMDBID"]
+          else if(movie.imdbID) {
+            if(elementIMDBStore){
+              elementIMDBStore.dataset["IMDBID"] = movie.imdbID
+              elementIMDBStore.querySelector('a[href*="web.stremio"]').href = `https://web.stremio.com/#/detail/movie/${movie.imdbID}/${movie.imdbID}`
+            }
+            return movie.imdbID
+          }
           else if(db){
             const store = db.transaction("letterboxdData", "readonly").objectStore("letterboxdData")
             let req = store.get(movie.link)
