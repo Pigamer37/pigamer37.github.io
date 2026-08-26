@@ -42,7 +42,7 @@
   }
 }
 .Instagram:before{
-  background-image:url('https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png');
+  background-image:url('https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp');
 }
 .Twitter:before{
   background-image:url('https://abs.twimg.com/favicons/twitter.3.ico');
@@ -50,13 +50,14 @@
 .Bluesky:before{
   background-size:contain;
   background-repeat:no-repeat;
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/1200px-Bluesky_Logo.svg.png');
+  background-image:url('https://bsky.social/about/images/favicon-32x32.png');
 }
 .Spotify:before{
   background-image:url('https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png');
 }
 .GitHub:before{
   background-image:url('https://github.githubassets.com/favicons/favicon-dark.svg');
+  @media (prefers-color-scheme: light){background-image:url('https://github.githubassets.com/favicons/favicon.svg')}
 }
 .LinkedIn:before{
   background-image:url('https://static.licdn.com/aero-v1/sc/h/akt4ae504epesldzj74dzred8');
