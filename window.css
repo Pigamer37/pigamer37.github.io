@@ -156,30 +156,25 @@ body{
 .window:fullscreen{
   display:flex;
   flex-direction:column;
-  & .title-bar{
-    padding-inline:.625rem;
-  }
+  & .title-bar{padding-inline:.625rem}
   & .content{
     padding:1.2rem;
     flex-grow:1;
     overflow:visible scroll;
-    display:block;
-  }
+    display:block}
   &.envelop .content{width:100% !important;padding:0;line-height:0;& img{object-fit:contain;max-width:100%;max-height:100%}}
 }
 header{
   position:sticky;
   z-index:1000;
   top:1rem;left:0;
-  view-transition-name:header;
-}
+  view-transition-name:header}
 nav .content ul{
   padding-inline-start:0;
   display:flex;
   flex-flow:row wrap;
   justify-content:center;
-  list-style-type:none;
-}
+  list-style-type:none}
 @keyframes menu-hover{
   from {background-color:#3d3d3d}
   50% {background-color:blue}
@@ -189,7 +184,6 @@ nav .content ul li a{
   color:#dedede;
   border-radius:1rem;
   padding-inline:1ch;
-  
   &[aria-current="page"]{
     text-decoration:underline var(--accent-orange) solid .3rem;
     /*font-weight:bold;*/
@@ -206,7 +200,7 @@ nav .content ul li a{
   border-radius:.40rem .40rem 0 0;
   /*background-color: var(--accent-orange);*/
   background:linear-gradient(var(--dark-grad-orage), var(--light-grad-orage));
-  color:#fff;
+  color:contrast-color(var(--accent-orange));
   padding:.3125rem;
   display:flex;
   justify-content:space-between;
@@ -221,17 +215,13 @@ nav .content ul li a{
 .title-bar .buttons button{
   background:none;
   border:none;
-  color:#fff;
   font-size:14px;
   cursor:not-allowed;
-  margin-inline-start:.3125rem;
-}
+  margin-inline-start:.3125rem}
 .title-bar .buttons button:is(:hover, :focus-visible){
   background:var(--hover-button-orange);
 }
-.title-bar .buttons button:last-child:is(:hover, :focus-visible){
-  background:red;
-}
+.title-bar .buttons button:last-child:is(:hover, :focus-visible){background:red}
 .content{
   padding:.625rem;
   background-color:var(--bg-dark);
@@ -255,7 +245,7 @@ summary{
 ins{
   display:inline-block;
   text-decoration:none;
-  background-color:#84a173;
+  color-scheme:light dark;background-color:light-dark(#d4fcbc,#3F8C1F)
 }
 q:before{content:open-quote}q:after{content:close-quote}/*force quotes just in case*/
 a:link{color:var(--accent-orange);}
@@ -288,7 +278,6 @@ a:not([href]){
   transition:transform 0.3s;
   &:focus-visible, &:focus-within{transform:translateY(0%);color:var(--accent-orange);text-decoration:none}
 }
-ins{color-scheme:light dark;background-color:light-dark(#d4fcbc,#3F8C1F)}
 img.center-block{display:block;margin-inline:auto}
 :is(img, figure).center{
   max-width:100%;
@@ -326,16 +315,16 @@ footer > p{
 @media (prefers-color-scheme: light){
   :root{scrollbar-color:var(--accent-orange) #f3f3f3}
   :focus{outline-color:black;}
-  body{background-color:white;color:black;}
-  .window{background-color:#000;}
-  .content{background-color:#f3f3f3;}
+  body{background-color:white;color:black}
+  .window{background-color:#000}
+  .content{background-color:#f3f3f3}
   @keyframes menu-hover-l{
-  from{background-color:#d9d9d9;}
-  50%{background-color:blue;}
+  from{background-color:#d9d9d9}
+  50%{background-color:blue}
   }
   nav .content ul li a{
     color:black;
-    &[aria-current="page"]{background-color:#d9d9d9;}
-    &:is(:hover, :focus-visible){background-color:#d9d9d9;animation:menu-hover-l 2000ms ease infinite;}
+    &[aria-current="page"]{background-color:#d9d9d9}
+    &:is(:hover, :focus-visible){background-color:#d9d9d9;animation:menu-hover-l 2000ms ease infinite}
   }
 }
